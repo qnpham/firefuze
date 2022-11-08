@@ -1,4 +1,4 @@
-INSERT INTO "public"."products" ("title", "price", "imageUrl", "developer", "publisher", "description", "supportKBM", "supportController")
+INSERT INTO "public"."products" ("title", "price", "imageurl", "developer", "publisher", "description", "supportkbm", "supportcontroller")
 VALUES ('Quake', '9.99', 'https://cdn.akamai.steamstatic.com/steam/apps/2310/header.jpg?t=1660240704', 'id Software, Nightdive Studios, MachineGames', 'Bethesda Softworks', 'Developed by the award-winning id Software, Quake® is the ground-breaking, original dark fantasy first-person shooter that inspires today''s retro-style FPS games. With Quake (Enhanced), experience the authentic, updated, and visually enhanced version of the original.', 'true', 'true'),
 
        ('PAYDAY 2', '9.99', 'https://cdn.akamai.steamstatic.com/steam/apps/218620/header.jpg?t=1666767102', 'OVERKILL - a Starbreeze Studio.', 'Starbreeze Publishing AB', 'PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree.', 'true', 'true'),
@@ -8,7 +8,7 @@ VALUES ('Quake', '9.99', 'https://cdn.akamai.steamstatic.com/steam/apps/2310/hea
 ;
 
 
-INSERT INTO "public"."screenshots" ("productId", "imageUrl")
+INSERT INTO "public"."screenshots" ("productid", "imageurl")
 VALUES ('1', 'https://cdn.akamai.steamstatic.com/steam/apps/2310/ss_b7d9bbc1036fe011e076eb70d57cfc6251863a4c.600x338.jpg?t=1660240704'),
         ('1', 'https://cdn.akamai.steamstatic.com/steam/apps/2310/ss_537a59320f0fa4eafcefe94df2e8fee00277fdeb.600x338.jpg?t=1660240704'),
         ('1', 'https://cdn.akamai.steamstatic.com/steam/apps/2310/ss_bfe906143a3ec377e5525affa45b1a2018e71c31.600x338.jpg?t=1660240704'),

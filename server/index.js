@@ -3,12 +3,30 @@ const express = require('express');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
 
+const pg = require('pg');
+const db = new pg.Pool({
+  connectionString: 'postgres://dev:dev@localhost/firefuze',
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
 const app = express();
 
-app.use(staticMiddleware);
+app.use(staticMiddleware, express.json());
 
-app.get('/api/hello', (req, res) => {
-  res.json({ hello: 'world' });
+app.get('/api/header', (req, res, next) => {
+  const limit = req.body.limit;
+  const sql = `
+  SELECT "imageurl", "productid"
+  from "products"
+  limit $1
+  `;
+  const params = [limit];
+  db.query(sql, params)
+    .then(result => res.status(200).json(result.rows))
+    .catch(err => next(err))
+  ;
 });
 
 app.use(errorMiddleware);

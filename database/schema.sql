@@ -28,7 +28,7 @@ CREATE TABLE "public"."carts" (
 CREATE TABLE "public"."orders" (
 	"orderid" serial NOT NULL,
 	"cartId" int NOT NULL,
-	"userEmail" TEXT NOT NULL,
+	"useremail" TEXT NOT NULL,
 	CONSTRAINT "orders_pk" PRIMARY KEY ("orderid")
 ) WITH (
   OIDS=FALSE
@@ -40,12 +40,12 @@ CREATE TABLE "public"."products" (
 	"productid" serial NOT NULL,
 	"title" TEXT NOT NULL,
 	"price" DECIMAL NOT NULL,
-	"imageUrl" TEXT NOT NULL,
+	"imageurl" TEXT NOT NULL,
 	"developer" TEXT NOT NULL,
 	"publisher" TEXT NOT NULL,
 	"description" TEXT NOT NULL,
-	"supportKBM" BOOLEAN NOT NULL,
-	"supportController" BOOLEAN NOT NULL,
+	"supportkbm" BOOLEAN NOT NULL,
+	"supportcontroller" BOOLEAN NOT NULL,
 	CONSTRAINT "products_pk" PRIMARY KEY ("productid")
 ) WITH (
   OIDS=FALSE
@@ -55,8 +55,8 @@ CREATE TABLE "public"."products" (
 
 CREATE TABLE "public"."screenshots" (
 	"imageId" serial NOT NULL,
-	"productId" serial NOT NULL,
-	"imageUrl" TEXT NOT NULL,
+	"productid" serial NOT NULL,
+	"imageurl" TEXT NOT NULL,
 	CONSTRAINT "screenshots_pk" PRIMARY KEY ("imageId")
 ) WITH (
   OIDS=FALSE
@@ -71,4 +71,4 @@ ALTER TABLE "cartitems" ADD CONSTRAINT "cartitems_fk1" FOREIGN KEY ("productid")
 ALTER TABLE "orders" ADD CONSTRAINT "orders_fk0" FOREIGN KEY ("cartId") REFERENCES "carts"("cartid");
 
 
-ALTER TABLE "screenshots" ADD CONSTRAINT "screenshots_fk0" FOREIGN KEY ("productId") REFERENCES "products"("productid");
+ALTER TABLE "screenshots" ADD CONSTRAINT "screenshots_fk0" FOREIGN KEY ("productid") REFERENCES "products"("productid");
