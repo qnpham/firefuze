@@ -15,8 +15,8 @@ const app = express();
 
 app.use(staticMiddleware, express.json());
 
-app.get('/api/header', (req, res, next) => {
-  const limit = req.body.limit;
+app.get('/api/header/limit/:limit', (req, res, next) => {
+  const limit = Number(req.params.limit);
   const sql = `
   SELECT "imageurl", "productid"
   from "products"
