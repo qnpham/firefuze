@@ -3,7 +3,9 @@ VALUES ('Quake', '9.99', 'https://cdn.akamai.steamstatic.com/steam/apps/2310/hea
 
        ('PAYDAY 2', '9.99', 'https://cdn.akamai.steamstatic.com/steam/apps/218620/header.jpg?t=1666767102', 'OVERKILL - a Starbreeze Studio.', 'Starbreeze Publishing AB', 'PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree.', 'true', 'true', 'Singleplayer, Multiplayer, Co-op'),
 
-      ('Fallout 76', '39.99', 'https://cdn.akamai.steamstatic.com/steam/apps/1151340/header.jpg?t=1665581700', 'Bethesda Game Studios', 'Bethesda Softworks', 'Bethesda Game Studios welcome you to Fallout 76. Twenty-five years after the bombs fall, you and your fellow Vault Dwellers emerge into post-nuclear America. Explore a vast wasteland in this open-world multiplayer addition to the Fallout story.', 'true', 'true', 'Multiplayer, Co-op, MMORPG')
+      ('Fallout 76', '39.99', 'https://cdn.akamai.steamstatic.com/steam/apps/1151340/header.jpg?t=1665581700', 'Bethesda Game Studios', 'Bethesda Softworks', 'Bethesda Game Studios welcome you to Fallout 76. Twenty-five years after the bombs fall, you and your fellow Vault Dwellers emerge into post-nuclear America. Explore a vast wasteland in this open-world multiplayer addition to the Fallout story.', 'true', 'true', 'Multiplayer, Co-op, MMORPG'),
+
+      ('Destiny 2: Legacy Collection', '59.99', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/header.jpg?t=1661876523', 'Bungie', 'Bungie', 'Destiny 2 is an action MMO with a single evolving world that you and your friends can join anytime, anywhere, absolutely free.', 'true', 'true', 'Singleplayer, Multiplayer, Co-Op, PVP')
 
 ;
 
@@ -25,7 +27,13 @@ VALUES ('1', 'https://cdn.akamai.steamstatic.com/steam/apps/2310/ss_b7d9bbc1036f
         ('3', 'https://cdn.akamai.steamstatic.com/steam/apps/1151340/ss_7b24767d5dfc0793ba5faaa35633c038241058fd.600x338.jpg?t=1665581700'),
         ('3', 'https://cdn.akamai.steamstatic.com/steam/apps/1151340/ss_45374c8b13e9aa755f6cf9565364e2b6ca83f592.600x338.jpg?t=1665581700'),
         ('3', 'https://cdn.akamai.steamstatic.com/steam/apps/1151340/ss_cb553adb59b6f77e3530eef68185f1ee1e70ad3e.600x338.jpg?t=1665581700'),
-        ('3', 'https://cdn.akamai.steamstatic.com/steam/apps/1151340/ss_e2f9a101b3b30aa4d612941db662d2a50553fc29.600x338.jpg?t=1665581700')
+        ('3', 'https://cdn.akamai.steamstatic.com/steam/apps/1151340/ss_e2f9a101b3b30aa4d612941db662d2a50553fc29.600x338.jpg?t=1665581700'),
+
+        ('4', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_7fcc82f468fcf8278c7ffa95cebf949bfc6845fc.600x338.jpg?t=1661876523'),
+        ('4', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_a9642404e586be28f856e8f02d038828f691a5ba.600x338.jpg?t=1661876523'),
+        ('4', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_01fdd090ed1dd70112ce2c6d6fc208df0a008ac7.600x338.jpg?t=1661876523'),
+        ('4', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_324e79ed624f3abd7a2eea2d187d6f616be17102.600x338.jpg?t=1661876523'),
+        ('4', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_a35aaa73e605c0738a53a74abbcb53768e8f39e1.600x338.jpg?t=1661876523')
 
 ;
 -- VALUES ("title", "price", "imageUrl", "developer", "publisher", "description", "supportKBM", "supportController")

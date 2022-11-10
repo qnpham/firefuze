@@ -20,7 +20,7 @@ class Home extends React.Component {
 
   componentDidMount() {
 
-    fetch('http://localhost:3000/api/header/limit/3')
+    fetch('http://localhost:3000/api/header/limit/4')
       .then(r => r.json())
       .then(r => {
         this.setState({ headers: r }, this.autoscroll);
@@ -88,14 +88,14 @@ class Home extends React.Component {
       const m = e.supportkbm ? <i className="fa-solid fa-computer-mouse" /> : null;
       const controller = e.supportcontroller ? <i className="fa-solid fa-gamepad" /> : null;
       return (
-        <div className="game-container row" key={e.productid} >
+        <div className="game-container row test" key={e.productid} >
           <div className='game-img-container column-one-third row'>
             <img src={e.imageurl} alt="" className='game-img'/>
           </div>
-          <div className='game-text-container column-one-half'>
-            <h4 className='game-title'>{e.title}</h4>
-            <p className='game-features'>{e.features}</p>
-            <div className='kbm-container'>
+          <div className='game-text-container'>
+            <h4 className='game-title game-text'>{e.title}</h4>
+            <p className='game-features game-text'>{e.features}</p>
+            <div className='kbm-container game-text'>
               {kb}
               {m}
               {controller}
@@ -151,9 +151,13 @@ class Home extends React.Component {
                   <img src={nextHeader.imageurl} alt="" className='next-carousel'/>
                 </div>
               </div>
-              <div className='product-list'>
-                <h4 className='best-sellers'>Best Sellers</h4>
-                {games}
+              <div className='best-sellers-container'>
+                <div className="row">
+                  <h4 className='best-sellers column-full'>Best Sellers</h4>
+                </div>
+                <div className='product-list row'>
+                  {games}
+                </div>
               </div>
             </div>
           </main>
