@@ -54,7 +54,7 @@ main {
   z-index: 1;
 }
 
-.best-sellers-container {
+.products-container {
   padding: 1rem;
 }
 
@@ -67,11 +67,11 @@ main {
   margin: 1.25rem 0;
   height: 4.75rem;
   border: 1px solid #5c5c5c;
+  align-items: center;
 }
 
 .game-img {
-  width: 6rem;
-  height: 3rem;
+  width: 6.5rem;
   object-fit: cover;
 }
 
@@ -81,18 +81,13 @@ main {
   height: 100%;
 }
 
-.game-text-container {
-  padding-top: 0.15rem;
-  padding-left: 0.5rem;
-  height: 100%;
-  line-height: 1.3rem;
-  display: flex;
+.game-text {
   flex-wrap: wrap;
-  align-items: center;
+  line-height: 1.25rem;
 }
 
-.game-title {
-  font-weight: 400;
+.full-width {
+  width: 100%;
 }
 
 .game-features {
@@ -100,7 +95,12 @@ main {
   font-weight: 200;
 }
 
-.kbm-container {
+.game-title {
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+
+.game-support {
   font-size: 0.6rem;
   letter-spacing: 0.2rem;
 }
@@ -146,12 +146,12 @@ main {
   margin-right: 30rem;
 }
 
-.game-text {
-  width: 100%;
+.custom-column {
+  flex-basis: 48%;
 }
 
-.test {
-  flex-basis: 48%;
+.best-sellers-container {
+  margin-top: 1rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -164,19 +164,11 @@ main {
     height: 6.5rem;
   }
 
-  .game-text-container {
-    line-height: 1.5rem;
-  }
-
-  .game-title {
-    font-size: 1rem;
-  }
-
   .game-features {
     font-size: 0.75rem;
   }
 
-  .kbm-container {
+  .game-support {
     font-size: 0.75rem;
     letter-spacing: 0.3rem;
   }
@@ -201,6 +193,10 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
   }
+}
+
+.bottom-padding {
+  padding: 0 1.5rem;
 }
 
 @media only screen and (min-width: 1024px) {

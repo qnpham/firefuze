@@ -95,25 +95,30 @@ class Home extends React.Component {
       const m = e.supportkbm ? <i className="fa-solid fa-computer-mouse" /> : null;
       const controller = e.supportcontroller ? <i className="fa-solid fa-gamepad" /> : null;
       return (
-        <div className="game-container row test" key={e.productid} >
-          <div className='game-img-container column-one-third row'>
-            <img src={e.imageurl} alt="" className='game-img'/>
-          </div>
-          <div className='game-text-container'>
-            <h4 className='game-title game-text'>{e.title}</h4>
-            <p className='game-features game-text'>{e.features}</p>
-            <div className='kbm-container game-text'>
-              {kb}
-              {m}
-              {controller}
+        <div className="game-container row custom-column" key={e.productid} >
+          <div className="column-one-third">
+            <div className='game-img-container row'>
+              <img src={e.imageurl} alt="" className='game-img'/>
             </div>
           </div>
-          <div className='price column-one-sixth row'>
-            ${e.price}
+          <div className="column-one-half">
+            <div className="game-text ">
+              <h4 className='game-title full-width'>{e.title}</h4>
+              <p className='game-features full-width'>{e.features}</p>
+              <div className='game-support full-width'>
+                {kb}
+                {m}
+                {controller}
+              </div>
+            </div>
+          </div>
+          <div className="column-one-sixth">
+            <p>{e.price}</p>
           </div>
         </div>
       );
     });
+
     if (device === 'mobile') {
       return (
         <div>
@@ -128,8 +133,12 @@ class Home extends React.Component {
                   {tabs}
                 </div>
               </div>
-              <div className='product-list'>
-                <h4 className='best-sellers'>Best Sellers</h4>
+              <div className='best-sellers-container bottom-padding'>
+                <div className="row">
+                  <h4 className='best-sellers column-full'>Best Sellers</h4>
+                </div>
+              </div>
+              <div className='product-list bottom-padding'>
                 {games}
               </div>
             </div>
@@ -158,13 +167,13 @@ class Home extends React.Component {
                   <img src={nextHeader.imageurl} alt="" className='next-carousel'/>
                 </div>
               </div>
-              <div className='best-sellers-container'>
+              <div className='best-sellers-container bottom-padding'>
                 <div className="row">
                   <h4 className='best-sellers column-full'>Best Sellers</h4>
                 </div>
-                <div className='product-list row'>
-                  {games}
-                </div>
+              </div>
+              <div className='product-list row bottom-padding'>
+                {games}
               </div>
             </div>
           </main>
