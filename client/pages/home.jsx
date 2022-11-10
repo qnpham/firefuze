@@ -14,6 +14,8 @@ class Home extends React.Component {
       intervalId: null
     };
     this.autoscroll = this.autoscroll.bind(this);
+    this.handlePrev = this.handlePrev.bind(this);
+    this.handleNext = this.handleNext.bind(this);
   }
 
   componentDidMount() {
@@ -27,29 +29,53 @@ class Home extends React.Component {
   }
 
   autoscroll() {
-    const { intervalId, carouselIndex, headers } = this.state;
-    let newIndex = carouselIndex;
-    if (intervalId) {
-      clearInterval(intervalId);
-    }
-    const newIntervalId = setInterval(() => {
-      newIndex++;
-      if (newIndex === headers.length) {
-        newIndex = 0;
-      } else if (newIndex === -1) {
-        newIndex = headers.length - 1;
-      }
+    const { intervalId } = this.state;
+    clearInterval(intervalId);
 
-      this.setState({ carouselIndex: newIndex });
+    const newIntervalId = setInterval(() => {
+      const currentIndex = this.convertIndex(this.state.carouselIndex, 'next');
+      this.setState({ carouselIndex: currentIndex });
     }, 3000);
     this.setState({ intervalId: newIntervalId });
+  }
+
+  handlePrev() {
+    const { carouselIndex } = this.state;
+    const newIndex = this.convertIndex(carouselIndex, 'prev');
+    this.setState({ carouselIndex: newIndex });
+    this.autoscroll();
+  }
+
+  handleNext() {
+    const { carouselIndex } = this.state;
+    const newIndex = this.convertIndex(carouselIndex, 'next');
+    this.setState({ carouselIndex: newIndex });
+    this.autoscroll();
+
+  }
+
+  convertIndex(index, conversion) {
+    const { headers } = this.state;
+    if (conversion === 'next') {
+      index++;
+      if (index === headers.length) {
+        index = 0;
+      }
+    } else if (conversion === 'prev') {
+      index--;
+      if (index === -1) {
+        index = headers.length - 1;
+      }
+    }
+    return index;
   }
 
   render() {
     const { headers, carouselIndex, device } = this.state;
     if (!headers) return null;
     const currentHeader = headers[carouselIndex];
-
+    const nextHeader = headers[this.convertIndex(carouselIndex, 'next')];
+    const prevHeader = headers[this.convertIndex(carouselIndex, 'prev')];
     const tabs = headers.map(e => {
       if (e.productid === currentHeader.productid) {
         return <i className="fa-solid fa-circle circle" key={e.productid}/>;
@@ -116,9 +142,13 @@ class Home extends React.Component {
                 <div className="tabs">
                   {tabs}
                 </div>
+                <div className="arrows-container">
+                  <i className="fa-solid fa-chevron-left left-arrow arrows" onClick={this.handlePrev}/>
+                  <i className="fa-solid fa-chevron-right right-arrow arrows" onClick={this.handleNext}/>
+                </div>
                 <div className="bg-carousel row">
-                  <img src={currentHeader.imageurl} alt="" className='prev-carousel'/>
-                  <img src={currentHeader.imageurl} alt="" className='next-carousel'/>
+                  <img src={prevHeader.imageurl} alt="" className='prev-carousel'/>
+                  <img src={nextHeader.imageurl} alt="" className='next-carousel'/>
                 </div>
               </div>
               <div className='product-list'>

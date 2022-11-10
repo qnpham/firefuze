@@ -21,7 +21,7 @@ main {
 }
 
 .carousel {
-  width: 100%;
+  z-index: 1;
 }
 
 .navbar {
@@ -51,6 +51,7 @@ main {
   position: absolute;
   width: 100%;
   bottom: 1.25rem;
+  z-index: 1;
 }
 
 .product-list {
@@ -106,21 +107,38 @@ main {
 }
 
 .bg-carousel {
-  margin-top: 3rem;
+  margin-top: 3.75rem;
   position: absolute;
   opacity: 0.5;
-  width: 90%;
+  width: 80%;
   justify-content: space-between;
 }
 
 .prev-carousel {
-  width: 35%;
-  height: 35%;
+  width: 30%;
+  height: 30%;
 }
 
 .next-carousel {
-  width: 35%;
-  height: 35%;
+  width: 30%;
+  height: 30%;
+}
+
+.arrows-container {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
+.arrows {
+  font-size: 1.5rem;
+}
+
+.left-arrow {
+  margin-right: 30rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -172,24 +190,33 @@ main {
     font-size: 2.5rem;
   }
 
-  .carousel {
-    width: 50%;
-    z-index: 1;
-  }
-
-  .tabs {
-    z-index: 1;
-  }
-
   .shopping-cart {
     font-size: 1.75rem;
   }
 
   .best-sellers {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .circle {
-    font-size: 1.25rem;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .carousel {
+    width: 45%;
+  }
+
+  .arrows-container {
+    margin-top: 7.5rem;
+  }
+
+  .left-arrow {
+    margin-right: 40rem;
+  }
+
+  .bg-carousel {
+    width: 70%;
   }
 }
