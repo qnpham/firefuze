@@ -46,6 +46,7 @@ CREATE TABLE "public"."products" (
 	"description" TEXT NOT NULL,
 	"supportkbm" BOOLEAN NOT NULL,
 	"supportcontroller" BOOLEAN NOT NULL,
+	"features" TEXT NOT NULL,
 	CONSTRAINT "products_pk" PRIMARY KEY ("productid")
 ) WITH (
   OIDS=FALSE

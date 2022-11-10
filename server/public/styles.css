@@ -1,5 +1,7 @@
 body {
   font-family: "Lexend Deca", sans-serif;
+  font-weight: 400;
+  color: white;
 }
 
 main {
@@ -7,7 +9,7 @@ main {
   height: 100vh;
 }
 
-h1 {
+.logo {
   font-size: 1.5rem;
   font-family: Pattaya, sans-serif;
   letter-spacing: 1px;
@@ -49,4 +51,56 @@ h1 {
   position: absolute;
   width: 100%;
   bottom: 1.25rem;
+}
+
+.product-list {
+  padding: 1rem;
+}
+
+.best-sellers {
+  font-weight: 300;
+}
+
+.game-container {
+  margin: 1.25rem 0;
+  height: 4.75rem;
+  border: 1px solid #5c5c5c;
+  justify-content: space-between;
+}
+
+.game-img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.game-img-container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.game-text-container {
+  padding-top: 0.15rem;
+  height: 100%;
+  line-height: 1.3rem;
+}
+
+.game-title {
+  font-weight: 400;
+}
+
+.game-features {
+  font-size: 0.6rem;
+  font-weight: 200;
+}
+
+.kbm-container {
+  font-size: 0.6rem;
+  letter-spacing: 0.2rem;
+}
+
+.price {
+  font-size: 0.75rem;
+  justify-content: center;
+  align-items: center;
 }

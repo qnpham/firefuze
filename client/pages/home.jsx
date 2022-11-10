@@ -44,7 +44,6 @@ class Home extends React.Component {
   render() {
     const { headers, carouselIndex } = this.state;
     if (!headers) return null;
-
     const currentHeader = headers[carouselIndex];
 
     const tabs = headers.map(e => {
@@ -52,6 +51,31 @@ class Home extends React.Component {
         return <i className="fa-solid fa-circle circle" key={e.productid}/>;
       }
       return <i className="fa-regular fa-circle circle" key={e.productid}/>;
+    });
+
+    const games = headers.map(e => {
+      const kb = e.supportkbm ? <i className="fa-solid fa-keyboard" /> : null;
+      const m = e.supportkbm ? <i className="fa-solid fa-computer-mouse" /> : null;
+      const controller = e.supportcontroller ? <i className="fa-solid fa-gamepad" /> : null;
+      return (
+        <div className="game-container row" key={e.productid} >
+          <div className='game-img-container column-one-third row'>
+            <img src={e.imageurl} alt="" className='game-img'/>
+          </div>
+          <div className='game-text-container column-two-fourths'>
+            <h4 className='game-title'>{e.title}</h4>
+            <p className='game-features'>{e.features}</p>
+            <div className='kbm-container'>
+              {kb}
+              {m}
+              {controller}
+            </div>
+          </div>
+          <div className='price column-one-fifth row'>
+            ${e.price}
+          </div>
+        </div>
+      );
     });
 
     return (
@@ -66,6 +90,10 @@ class Home extends React.Component {
               <div className="tabs">
                 {tabs}
               </div>
+            </div>
+            <div className='product-list'>
+              <h4 className='best-sellers'>Best Sellers</h4>
+              {games}
             </div>
           </div>
         </main>
