@@ -65,11 +65,10 @@ main {
   margin: 1.25rem 0;
   height: 4.75rem;
   border: 1px solid #5c5c5c;
-  justify-content: space-between;
 }
 
 .game-img {
-  width: 100%;
+  width: 7rem;
   object-fit: cover;
 }
 
@@ -80,6 +79,7 @@ main {
 }
 
 .game-text-container {
+  width: 10rem;
   padding-top: 0.15rem;
   height: 100%;
   line-height: 1.3rem;
@@ -90,7 +90,7 @@ main {
 }
 
 .game-features {
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   font-weight: 200;
 }
 

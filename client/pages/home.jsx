@@ -71,7 +71,7 @@ class Home extends React.Component {
               {controller}
             </div>
           </div>
-          <div className='price column-one-fifth row'>
+          <div className='price column-one-sixth row'>
             ${e.price}
           </div>
         </div>

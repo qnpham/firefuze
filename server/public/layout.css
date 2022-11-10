@@ -27,5 +27,5 @@
 }
 
 .column-one-sixth {
-  flex-basis: calc(100 * 1/6);
+  flex-basis: calc(100% * 1/6);
 }
