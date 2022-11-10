@@ -4,7 +4,11 @@ import Navbar from '../components/navbar';
 class Home extends React.Component {
   constructor(props) {
     super(props);
+
+    const device = screen.width < 1024 ? 'mobile' : 'desktop';
+
     this.state = {
+      device,
       headers: null,
       carouselIndex: 0,
       intervalId: null
@@ -42,7 +46,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { headers, carouselIndex } = this.state;
+    const { headers, carouselIndex, device } = this.state;
     if (!headers) return null;
     const currentHeader = headers[carouselIndex];
 
@@ -77,28 +81,55 @@ class Home extends React.Component {
         </div>
       );
     });
-
-    return (
-      <div>
-        <header>
-          <Navbar />
-        </header>
-        <main>
-          <div className="container">
-            <div className="carousel-container row">
-              <img src={currentHeader.imageurl} alt="" className='carousel'/>
-              <div className="tabs">
-                {tabs}
+    if (device === 'mobile') {
+      return (
+        <div>
+          <header>
+            <Navbar />
+          </header>
+          <main>
+            <div className="container">
+              <div className="carousel-container row">
+                <img src={currentHeader.imageurl} alt="" className='carousel'/>
+                <div className="tabs">
+                  {tabs}
+                </div>
+              </div>
+              <div className='product-list'>
+                <h4 className='best-sellers'>Best Sellers</h4>
+                {games}
               </div>
             </div>
-            <div className='product-list'>
-              <h4 className='best-sellers'>Best Sellers</h4>
-              {games}
+          </main>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <header>
+            <Navbar />
+          </header>
+          <main>
+            <div className="container">
+              <div className="carousel-container row">
+                <img src={currentHeader.imageurl} alt="" className='carousel'/>
+                <div className="tabs">
+                  {tabs}
+                </div>
+                <div className="bg-carousel row">
+                  <img src={currentHeader.imageurl} alt="" className='prev-carousel'/>
+                  <img src={currentHeader.imageurl} alt="" className='next-carousel'/>
+                </div>
+              </div>
+              <div className='product-list'>
+                <h4 className='best-sellers'>Best Sellers</h4>
+                {games}
+              </div>
             </div>
-          </div>
-        </main>
-      </div>
-    );
+          </main>
+        </div>
+      );
+    }
   }
 }
 export default Home;
