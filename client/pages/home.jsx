@@ -5,7 +5,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    const device = screen.width < 1024 ? 'mobile' : 'desktop';
+    const device = window.innerWidth < 1024 ? 'mobile' : 'desktop';
 
     this.state = {
       device,
@@ -26,6 +26,13 @@ class Home extends React.Component {
         this.setState({ headers: r }, this.autoscroll);
       })
       .catch(r => console.error(r));
+
+    window.addEventListener('resize', e => {
+      const device = window.innerWidth < 1024 ? 'mobile' : 'desktop';
+      if (this.state.device !== device) {
+        this.setState({ device });
+      }
+    });
   }
 
   autoscroll() {
