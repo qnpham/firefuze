@@ -68,7 +68,7 @@ main {
 }
 
 .game-img {
-  width: 7rem;
+  width: 100%;
   object-fit: cover;
 }
 
@@ -79,8 +79,8 @@ main {
 }
 
 .game-text-container {
-  width: 10rem;
   padding-top: 0.15rem;
+  padding-left: 0.5rem;
   height: 100%;
   line-height: 1.3rem;
 }
@@ -103,4 +103,48 @@ main {
   font-size: 0.75rem;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .best-sellers {
+    font-size: 1.5rem;
+  }
+
+  .game-container {
+    margin: 1.75rem 0;
+    height: 6.5rem;
+  }
+
+  .game-text-container {
+    line-height: 2rem;
+  }
+
+  .game-title {
+    font-size: 1.5rem;
+  }
+
+  .game-features {
+    font-size: 0.9rem;
+  }
+
+  .kbm-container {
+    font-size: 0.9rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .price {
+    font-size: 1.2rem;
+  }
+
+  .circle {
+    font-size: 1rem;
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
+
+  .shopping-cart {
+    font-size: 1.5rem;
+  }
 }

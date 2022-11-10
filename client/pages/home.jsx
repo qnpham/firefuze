@@ -62,7 +62,7 @@ class Home extends React.Component {
           <div className='game-img-container column-one-third row'>
             <img src={e.imageurl} alt="" className='game-img'/>
           </div>
-          <div className='game-text-container column-two-fourths'>
+          <div className='game-text-container column-one-half'>
             <h4 className='game-title'>{e.title}</h4>
             <p className='game-features'>{e.features}</p>
             <div className='kbm-container'>
