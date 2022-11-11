@@ -413,6 +413,18 @@ main {
   .best-sellers {
     font-size: 1.25rem;
   }
+
+  .detail-price-container {
+    margin-top: 3rem;
+  }
+
+  .detail-description {
+    margin-top: 6rem;
+  }
+
+  .detail-extra {
+    margin-top: 8rem;
+  }
 }
 
 @media only screen and (min-width: 1100px) {
