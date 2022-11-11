@@ -226,6 +226,12 @@ main {
   padding: 0 2.5rem;
 }
 
+.screenshot-carousel {
+  object-fit: cover;
+  width: 100%;
+  height: 13.5rem;
+}
+
 @media only screen and (min-width: 1024px) {
   .logo {
     font-size: 2rem;
