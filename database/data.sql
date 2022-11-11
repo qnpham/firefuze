@@ -5,7 +5,7 @@ VALUES ('Quake', '9.99', 'https://cdn.akamai.steamstatic.com/steam/apps/2310/hea
 
       ('Fallout 76', '39.99', 'https://cdn.akamai.steamstatic.com/steam/apps/1151340/header.jpg?t=1665581700', 'Bethesda Game Studios', 'Bethesda Softworks', 'Bethesda Game Studios welcome you to Fallout 76. Twenty-five years after the bombs fall, you and your fellow Vault Dwellers emerge into post-nuclear America. Explore a vast wasteland in this open-world multiplayer addition to the Fallout story.', 'true', 'true', 'Multiplayer, Co-op, MMORPG'),
 
-      ('Destiny 2: Legacy Collection', '59.99', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/header.jpg?t=1661876523', 'Bungie', 'Bungie', 'Destiny 2 is an action MMO with a single evolving world that you and your friends can join anytime, anywhere, absolutely free.', 'true', 'true', 'Singleplayer, Multiplayer, Co-Op, PVP')
+      ('Destiny 2', '59.99', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/header.jpg?t=1661876523', 'Bungie', 'Bungie', 'Destiny 2 is an action MMO with a single evolving world that you and your friends can join anytime, anywhere, absolutely free.', 'true', 'true', 'Singleplayer, Multiplayer, Co-Op')
 
 ;
 

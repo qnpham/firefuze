@@ -5,7 +5,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    const device = window.innerWidth < 1024 ? 'mobile' : 'desktop';
+    const device = window.innerWidth < 768 ? 'small' : 'regular';
 
     this.state = {
       device,
@@ -28,7 +28,7 @@ class Home extends React.Component {
       .catch(r => console.error(r));
 
     window.addEventListener('resize', e => {
-      const device = window.innerWidth < 1024 ? 'mobile' : 'desktop';
+      const device = window.innerWidth < 768 ? 'small' : 'regular';
       if (this.state.device !== device) {
         this.setState({ device });
       }
@@ -113,13 +113,13 @@ class Home extends React.Component {
             </div>
           </div>
           <div className="column-one-sixth">
-            <p>{e.price}</p>
+            <p className='price'>${e.price}</p>
           </div>
         </div>
       );
     });
 
-    if (device === 'mobile') {
+    if (device === 'small') {
       return (
         <div>
           <header>
@@ -162,9 +162,9 @@ class Home extends React.Component {
                   <i className="fa-solid fa-chevron-left left-arrow arrows" onClick={this.handlePrev}/>
                   <i className="fa-solid fa-chevron-right right-arrow arrows" onClick={this.handleNext}/>
                 </div>
-                <div className="bg-carousel row">
-                  <img src={prevHeader.imageurl} alt="" className='prev-carousel'/>
-                  <img src={nextHeader.imageurl} alt="" className='next-carousel'/>
+                <div className="bg-carousel-container row">
+                  <img src={prevHeader.imageurl} alt="" className='prev-carousel bg-carousel'/>
+                  <img src={nextHeader.imageurl} alt="" className='next-carousel bg-carousel'/>
                 </div>
               </div>
               <div className='best-sellers-container bottom-padding'>

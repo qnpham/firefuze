@@ -30,7 +30,7 @@ main {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 0.25rem 1.5rem;
+  padding: 0.25rem 2.25rem;
 }
 
 .shopping-cart {
@@ -65,25 +65,24 @@ main {
 
 .game-container {
   margin: 1.25rem 0;
-  height: 4.75rem;
   border: 1px solid #5c5c5c;
   align-items: center;
 }
 
 .game-img {
-  width: 6.5rem;
+  width: 100%;
   object-fit: cover;
 }
 
 .game-img-container {
   justify-content: center;
   align-items: center;
-  height: 100%;
 }
 
 .game-text {
+  padding-left: 0.25rem;
   flex-wrap: wrap;
-  line-height: 1.25rem;
+  line-height: 1rem;
 }
 
 .full-width {
@@ -91,7 +90,7 @@ main {
 }
 
 .game-features {
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   font-weight: 200;
 }
 
@@ -101,7 +100,7 @@ main {
 }
 
 .game-support {
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   letter-spacing: 0.2rem;
 }
 
@@ -111,7 +110,7 @@ main {
   align-items: center;
 }
 
-.bg-carousel {
+.bg-carousel-container {
   margin-top: 3.75rem;
   position: absolute;
   opacity: 0.5;
@@ -119,12 +118,7 @@ main {
   justify-content: space-between;
 }
 
-.prev-carousel {
-  width: 30%;
-  height: 30%;
-}
-
-.next-carousel {
+.bg-carousel {
   width: 30%;
   height: 30%;
 }
@@ -154,14 +148,42 @@ main {
   margin-top: 1rem;
 }
 
+@media only screen and (min-width: 575px) {
+  .game-text {
+    line-height: 1.5rem;
+  }
+
+  .game-title {
+    font-size: 0.85rem;
+  }
+
+  .game-features {
+    font-size: 0.7rem;
+  }
+
+  .game-support {
+    font-size: 0.6rem;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .best-sellers {
     font-size: 1.25rem;
   }
 
   .game-container {
-    margin: 1.75rem 0;
+    margin: 1.75rem auto;
     height: 6.5rem;
+    width: 100%;
+  }
+
+  .game-text {
+    margin-left: 0.5rem;
+    line-height: 1.75rem;
+  }
+
+  .game-title {
+    font-size: 1rem;
   }
 
   .game-features {
@@ -182,11 +204,11 @@ main {
   }
 
   .logo {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .shopping-cart {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .product-list {
@@ -201,7 +223,7 @@ main {
 
 @media only screen and (min-width: 1024px) {
   .logo {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .shopping-cart {
@@ -217,9 +239,17 @@ main {
   }
 }
 
-/* @media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 1100px) {
   .carousel {
-    width: 45%;
+    width: 35%;
+  }
+
+  .circle {
+    font-size: 0.6rem;
+  }
+
+  .custom-column {
+    flex-basis: 45%;
   }
 
   .arrows-container {
@@ -230,7 +260,12 @@ main {
     margin-right: 40rem;
   }
 
-  .bg-carousel {
-    width: 70%;
+  .bg-carousel-container {
+    margin-top: 4.5rem;
+    width: 60%;
   }
-} */
+
+  .bg-carousel {
+    width: 25%;
+  }
+}
