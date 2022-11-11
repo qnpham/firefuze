@@ -133,12 +133,12 @@ class Home extends React.Component {
                   {tabs}
                 </div>
               </div>
-              <div className='best-sellers-container bottom-padding'>
+              <div className='best-sellers-container side-padding'>
                 <div className="row">
                   <h4 className='best-sellers column-full'>Best Sellers</h4>
                 </div>
               </div>
-              <div className='product-list bottom-padding'>
+              <div className='product-list side-padding'>
                 {games}
               </div>
             </div>
@@ -167,12 +167,12 @@ class Home extends React.Component {
                   <img src={nextHeader.imageurl} alt="" className='next-carousel bg-carousel'/>
                 </div>
               </div>
-              <div className='best-sellers-container bottom-padding'>
+              <div className='best-sellers-container side-padding'>
                 <div className="row">
                   <h4 className='best-sellers column-full'>Best Sellers</h4>
                 </div>
               </div>
-              <div className='product-list row bottom-padding'>
+              <div className='product-list row side-padding'>
                 {games}
               </div>
             </div>

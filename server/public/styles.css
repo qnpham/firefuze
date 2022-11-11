@@ -222,8 +222,8 @@ main {
   }
 }
 
-.bottom-padding {
-  padding: 0 1.5rem;
+.side-padding {
+  padding: 0 2.5rem;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -236,7 +236,7 @@ main {
   }
 
   .best-sellers {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .tab {
