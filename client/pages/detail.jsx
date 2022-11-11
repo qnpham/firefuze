@@ -2,14 +2,15 @@ import React from 'react';
 import Navbar from '../components/navbar';
 
 class detail extends React.Component {
-
   constructor(props) {
+    const device = window.innerWidth < 768 ? 'small' : 'regular';
     super(props);
     this.state = {
       intervalId: null,
       carouselIndex: 0,
       game: null,
-      screenshots: null
+      screenshots: null,
+      device
     };
   }
 
@@ -27,6 +28,13 @@ class detail extends React.Component {
         this.setState({ screenshots: r }, this.autoscroll);
       })
       .catch(r => console.error(r));
+
+    window.addEventListener('resize', e => {
+      const device = window.innerWidth < 768 ? 'small' : 'regular';
+      if (this.state.device !== device) {
+        this.setState({ device });
+      }
+    });
   }
 
   autoscroll() {
@@ -72,32 +80,105 @@ class detail extends React.Component {
   }
 
   render() {
-    const { game, screenshots, carouselIndex } = this.state;
+    const { game, screenshots, carouselIndex, device } = this.state;
     if (!game || !screenshots) return null;
     const currentScreenshot = screenshots[carouselIndex];
+    const keyboard = game.supportkbm ? <i className="fa-solid fa-keyboard" /> : null;
+    const mouse = game.supportkbm ? <i className="fa-solid fa-computer-mouse" /> : null;
+    const controller = game.supportcontroller ? <i className="fa-solid fa-gamepad" /> : null;
     const tabs = screenshots.map(e => {
       if (e.imageid === currentScreenshot.imageid) {
         return <span className='white tab' key={e.imageid}>_</span>;
       }
       return <span className='gray tab' key={e.imageid}>_</span>;
     });
-    return (
-      <div>
-        <header>
-          <Navbar/>
-        </header>
-        <main>
-          <div className='container'>
-            <div className="carousel-container row">
-              <img src={currentScreenshot.imageurl} alt="" className='screenshot-carousel'/>
-              <div className="tabs">
-                {tabs}
+
+    if (device === 'small') {
+      return (
+        <div>
+          <header>
+            <Navbar/>
+          </header>
+          <main>
+            <div className='container'>
+              <div className="carousel-container row">
+                <img src={currentScreenshot.imageurl} alt="" className='ss-carousel'/>
+                <div className="tabs">
+                  {tabs}
+                </div>
+              </div>
+              <div className="detail-text-container">
+                <h3 className='detail-title'>Quake</h3>
+                <p className='detail-description'>{game.description}</p>
+
+                <div className="detail-extra">
+                  <div className="developer">
+                    <span className='label'>Developed by:</span>
+                    <span className='value'>{game.developer}</span>
+                  </div>
+                  <div className="publisher">
+                    <span className='label'>Published by:</span>
+                    <span className='value'>{game.publisher}</span>
+                  </div>
+                  <div className="supported">
+                    <span className='label'>Supported:</span>
+                    <span className='value supported-icons'>{keyboard} {mouse} {controller}</span>
+                  </div>
+                  <div className='detail-price-container'>
+                    <h3 className='detailed-price'>${game.price}</h3>
+                  </div>
+                  <div className='add-to-cart-container row'>
+                    <a href="#" className='add-to-cart'> ADD TO CART</a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </main>
-      </div>
-    );
+          </main>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <header>
+            <Navbar/>
+          </header>
+          <main>
+            <div className='container'>
+              <div className="carousel-container row">
+                <img src={currentScreenshot.imageurl} alt="" className='ss-carousel'/>
+                <div className="tabs">
+                  {tabs}
+                </div>
+              </div>
+              <div className="detail-text-container">
+                <h3 className='detail-title'>Quake</h3>
+                <p className='detail-description'>{game.description}</p>
+                <div className="detail-extra">
+                  <div className="developer">
+                    <span className='label'>Developed by:</span>
+                    <span className='value'>{game.developer}</span>
+                  </div>
+                  <div className="publisher">
+                    <span className='label'>Published by:</span>
+                    <span className='value'>{game.publisher}</span>
+                  </div>
+                  <div className="supported">
+                    <span className='label'>Supported:</span>
+                    <span className='value supported-icons'>{keyboard} {mouse} {controller}</span>
+                  </div>
+                  <div className='detail-price-container'>
+                    <h3 className='detailed-price'>${game.price}</h3>
+                  </div>
+                  <div className='add-to-cart-container row'>
+                    <a href="#" className='add-to-cart'> ADD TO CART</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      );
+    }
   }
 }
 export default detail;
