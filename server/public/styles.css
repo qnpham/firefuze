@@ -1,0 +1,247 @@
+body {
+  font-family: "Lexend Deca", sans-serif;
+  font-weight: 400;
+  color: white;
+}
+
+main {
+  background-color: #1e1f22;
+  height: 100vh;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-family: Pattaya, sans-serif;
+  letter-spacing: 1px;
+}
+
+.carousel-container {
+  justify-content: center;
+  position: relative;
+}
+
+.carousel {
+  z-index: 1;
+}
+
+.navbar {
+  color: white;
+  background-color: #1c1d20;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 2.25rem;
+}
+
+.shopping-cart {
+  font-size: 1rem;
+}
+
+.tab {
+  font-size: 1.5rem;
+}
+
+.tabs {
+  position: absolute;
+  bottom: 1.25rem;
+  z-index: 1;
+}
+
+.products-container {
+  padding: 1rem;
+}
+
+.best-sellers {
+  font-weight: 300;
+  display: inline-block;
+}
+
+.game-container {
+  margin: 1.25rem 0;
+  border: 1px solid #5c5c5c;
+  align-items: center;
+}
+
+.game-img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.game-text {
+  padding-left: 0.25rem;
+  line-height: 1rem;
+  margin-left: 0.5rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.game-features {
+  font-size: 0.55rem;
+  font-weight: 200;
+}
+
+.game-title {
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+
+.game-support {
+  font-size: 0.5rem;
+  letter-spacing: 0.2rem;
+}
+
+.price {
+  font-size: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-carousel-container {
+  margin-top: 3.75rem;
+  position: absolute;
+  opacity: 0.5;
+  width: 45rem;
+  justify-content: space-between;
+}
+
+.bg-carousel {
+  width: 30%;
+  height: 30%;
+}
+
+.arrows-container {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
+.arrows {
+  font-size: 1.5rem;
+}
+
+.left-arrow {
+  margin-right: 30rem;
+}
+
+.custom-column {
+  flex-basis: 49%;
+}
+
+.best-sellers-container {
+  margin-top: 1rem;
+}
+
+.gray {
+  color: gray;
+}
+
+.white {
+  color: white;
+}
+
+.arrows:hover {
+  cursor: pointer;
+}
+
+.carousel:hover {
+  cursor: pointer;
+}
+
+.tabs:hover {
+  cursor: default;
+}
+
+@media only screen and (min-width: 575px) {
+  .game-text {
+    line-height: 1.5rem;
+  }
+
+  .game-title {
+    font-size: 0.85rem;
+  }
+
+  .game-features {
+    font-size: 0.7rem;
+  }
+
+  .game-support {
+    font-size: 0.6rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .best-sellers {
+    font-size: 1.25rem;
+  }
+
+  .game-container {
+    margin: 1.75rem auto;
+    height: 6.5rem;
+  }
+
+  .game-text {
+    line-height: 1.75rem;
+  }
+
+  .game-title {
+    font-size: 1rem;
+  }
+
+  .game-features {
+    font-size: 0.75rem;
+  }
+
+  .game-support {
+    font-size: 0.75rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .price {
+    font-size: 0.9rem;
+  }
+
+  .tab {
+    font-size: 1.75rem;
+  }
+
+  .logo {
+    font-size: 1.75rem;
+  }
+
+  .shopping-cart {
+    font-size: 1.25rem;
+  }
+
+  .product-list {
+    flex-wrap: wrap;
+  }
+}
+
+.side-padding {
+  padding: 0 2.5rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .logo {
+    font-size: 2rem;
+  }
+
+  .shopping-cart {
+    font-size: 1.75rem;
+  }
+
+  .best-sellers {
+    font-size: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .custom-column {
+    flex-basis: 45%;
+  }
+}
