@@ -37,19 +37,12 @@ main {
   font-size: 1rem;
 }
 
-.circle {
-  font-size: 0.75rem;
-  color: white;
-  bottom: 1.5rem;
-  padding: 0 0.25rem;
+.tab {
+  font-size: 1.5rem;
 }
 
 .tabs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
-  width: 100%;
   bottom: 1.25rem;
   z-index: 1;
 }
@@ -74,15 +67,10 @@ main {
   object-fit: cover;
 }
 
-.game-img-container {
-  justify-content: center;
-  align-items: center;
-}
-
 .game-text {
   padding-left: 0.25rem;
-  flex-wrap: wrap;
   line-height: 1rem;
+  margin-left: 0.5rem;
 }
 
 .full-width {
@@ -114,7 +102,7 @@ main {
   margin-top: 3.75rem;
   position: absolute;
   opacity: 0.5;
-  width: 80%;
+  width: 45rem;
   justify-content: space-between;
 }
 
@@ -141,11 +129,31 @@ main {
 }
 
 .custom-column {
-  flex-basis: 48%;
+  flex-basis: 49%;
 }
 
 .best-sellers-container {
   margin-top: 1rem;
+}
+
+.gray {
+  color: gray;
+}
+
+.white {
+  color: white;
+}
+
+.arrows:hover {
+  cursor: pointer;
+}
+
+.carousel:hover {
+  cursor: pointer;
+}
+
+.tabs:hover {
+  cursor: default;
 }
 
 @media only screen and (min-width: 575px) {
@@ -174,11 +182,9 @@ main {
   .game-container {
     margin: 1.75rem auto;
     height: 6.5rem;
-    width: 100%;
   }
 
   .game-text {
-    margin-left: 0.5rem;
     line-height: 1.75rem;
   }
 
@@ -196,11 +202,11 @@ main {
   }
 
   .price {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
-  .circle {
-    font-size: 0.75rem;
+  .tab {
+    font-size: 1.75rem;
   }
 
   .logo {
@@ -213,7 +219,6 @@ main {
 
   .product-list {
     flex-wrap: wrap;
-    justify-content: space-between;
   }
 }
 
@@ -234,38 +239,17 @@ main {
     font-size: 1.5rem;
   }
 
-  .circle {
+  .tab {
     font-size: 1rem;
   }
 }
 
 @media only screen and (min-width: 1100px) {
-  .carousel {
-    width: 35%;
-  }
-
-  .circle {
-    font-size: 0.6rem;
+  .tab {
+    font-size: 2rem;
   }
 
   .custom-column {
     flex-basis: 45%;
-  }
-
-  .arrows-container {
-    margin-top: 7.5rem;
-  }
-
-  .left-arrow {
-    margin-right: 40rem;
-  }
-
-  .bg-carousel-container {
-    margin-top: 4.5rem;
-    width: 60%;
-  }
-
-  .bg-carousel {
-    width: 25%;
   }
 }

@@ -85,14 +85,14 @@ class Home extends React.Component {
     const prevHeader = headers[this.convertIndex(carouselIndex, 'prev')];
     const tabs = headers.map(e => {
       if (e.productid === currentHeader.productid) {
-        return <i className="fa-solid fa-circle circle" key={e.productid}/>;
+        return <span className='white tab' key={e.productid}>_</span>;
       }
-      return <i className="fa-regular fa-circle circle" key={e.productid}/>;
+      return <span className='gray tab' key={e.productid}>_</span>;
     });
 
     const games = headers.map(e => {
-      const kb = e.supportkbm ? <i className="fa-solid fa-keyboard" /> : null;
-      const m = e.supportkbm ? <i className="fa-solid fa-computer-mouse" /> : null;
+      const keyboard = e.supportkbm ? <i className="fa-solid fa-keyboard" /> : null;
+      const mouse = e.supportkbm ? <i className="fa-solid fa-computer-mouse" /> : null;
       const controller = e.supportcontroller ? <i className="fa-solid fa-gamepad" /> : null;
       return (
         <div className="game-container row custom-column" key={e.productid} >
@@ -106,8 +106,8 @@ class Home extends React.Component {
               <h4 className='game-title full-width'>{e.title}</h4>
               <p className='game-features full-width'>{e.features}</p>
               <div className='game-support full-width'>
-                {kb}
-                {m}
+                {keyboard}
+                {mouse}
                 {controller}
               </div>
             </div>
