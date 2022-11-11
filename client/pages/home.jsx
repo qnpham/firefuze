@@ -20,7 +20,7 @@ class Home extends React.Component {
 
   componentDidMount() {
 
-    fetch('http://localhost:3000/api/header/limit/4')
+    fetch('http://localhost:3000/api/header/limit/6')
       .then(r => r.json())
       .then(r => {
         this.setState({ headers: r }, this.autoscroll);
