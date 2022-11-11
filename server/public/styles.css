@@ -301,6 +301,10 @@ main {
 }
 
 @media only screen and (min-width: 768px) {
+  main {
+    overflow-y: scroll;
+  }
+
   .product-list {
     flex-wrap: wrap;
   }
@@ -345,6 +349,55 @@ main {
 
   .shopping-cart {
     font-size: 1.25rem;
+  }
+
+  .detail-text-container {
+    margin-top: 1.5rem;
+    width: 50%;
+    position: absolute;
+    right: 1.25rem;
+    z-index: 0;
+  }
+
+  .screenshot-container {
+    width: 48%;
+    height: 30rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 1rem;
+  }
+
+  .screenshot {
+    box-sizing: content-box;
+    object-fit: cover;
+    width: 95%;
+    height: 18rem;
+    padding: 2rem 0;
+  }
+
+  .line {
+    margin-top: 0.25rem;
+    width: 6.25rem;
+    height: 0.15rem;
+    background-color: white;
+  }
+
+  .detail-title-container {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 7rem;
+  }
+
+  .detail-price-container {
+    margin-top: 2rem;
+  }
+
+  .detail-description {
+    margin-top: 5rem;
+  }
+
+  .detail-extra {
+    margin-top: 7rem;
   }
 }
 
