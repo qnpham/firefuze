@@ -55,10 +55,10 @@ CREATE TABLE "public"."products" (
 
 
 CREATE TABLE "public"."screenshots" (
-	"imageId" serial NOT NULL,
+	"imageid" serial NOT NULL,
 	"productid" serial NOT NULL,
 	"imageurl" TEXT NOT NULL,
-	CONSTRAINT "screenshots_pk" PRIMARY KEY ("imageId")
+	CONSTRAINT "screenshots_pk" PRIMARY KEY ("imageid")
 ) WITH (
   OIDS=FALSE
 );
