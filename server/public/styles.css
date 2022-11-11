@@ -212,7 +212,7 @@ main {
   text-align: center;
 }
 
-.detailed-price {
+.detail-price {
   font-weight: 300;
   font-size: 1.75rem;
 }
@@ -234,10 +234,22 @@ main {
   text-align: center;
   color: white;
   text-decoration: none;
-  padding: 0.75rem;
+  padding: 0.5rem;
+}
+
+.side-padding {
+  padding: 0 2.5rem;
 }
 
 @media only screen and (min-width: 575px) {
+  .logo {
+    font-size: 1.75rem;
+  }
+
+  .shopping-cart {
+    font-size: 1.25rem;
+  }
+
   .game-text {
     line-height: 1.5rem;
   }
@@ -253,9 +265,46 @@ main {
   .game-support {
     font-size: 0.6rem;
   }
+
+  .detail-title {
+    font-size: 2rem;
+  }
+
+  .detail-description {
+    font-size: 1.25rem;
+    line-height: 2rem;
+  }
+
+  .label {
+    font-size: 1rem;
+  }
+
+  .value {
+    font-size: 1rem;
+  }
+
+  .detail-price {
+    font-size: 2rem;
+  }
+
+  .detail-extra {
+    line-height: 2rem;
+  }
+
+  .add-to-cart-container {
+    width: 9rem;
+  }
+
+  .add-to-cart {
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (min-width: 768px) {
+  .product-list {
+    flex-wrap: wrap;
+  }
+
   .best-sellers {
     font-size: 1.25rem;
   }
@@ -297,14 +346,6 @@ main {
   .shopping-cart {
     font-size: 1.25rem;
   }
-
-  .product-list {
-    flex-wrap: wrap;
-  }
-}
-
-.side-padding {
-  padding: 0 2.5rem;
 }
 
 @media only screen and (min-width: 1024px) {
