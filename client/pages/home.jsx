@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import Loading from './loading';
 
 class Home extends React.Component {
   constructor(props) {
@@ -91,7 +92,8 @@ class Home extends React.Component {
 
   render() {
     const { headers, carouselIndex, device } = this.state;
-    if (!headers) return null;
+    if (!headers) return <Loading />;
+
     const currentHeader = headers[carouselIndex];
     const nextHeader = headers[this.convertIndex(carouselIndex, 'next')];
     const prevHeader = headers[this.convertIndex(carouselIndex, 'prev')];

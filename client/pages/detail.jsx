@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import Loading from './loading';
 
 class detail extends React.Component {
   constructor(props) {
@@ -83,7 +84,8 @@ class detail extends React.Component {
 
   render() {
     const { game, screenshots, carouselIndex, device } = this.state;
-    if (!game || !screenshots) return null;
+    if (!game || !screenshots) return <Loading />;
+
     const currentScreenshot = screenshots[carouselIndex];
     const keyboard = game.supportkbm ? <i className="fa-solid fa-keyboard" /> : null;
     const mouse = game.supportkbm ? <i className="fa-solid fa-computer-mouse" /> : null;
