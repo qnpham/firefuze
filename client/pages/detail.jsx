@@ -15,14 +15,16 @@ class detail extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/game/1')
+    const gameId = this.props.id;
+
+    fetch(`http://localhost:3000/api/game/${gameId}`)
       .then(r => r.json())
       .then(r => {
         this.setState({ game: r });
       })
       .catch(r => console.error(r));
 
-    fetch('http://localhost:3000/api/screenshots/1')
+    fetch(`http://localhost:3000/api/screenshots/${gameId}`)
       .then(r => r.json())
       .then(r => {
         this.setState({ screenshots: r }, this.autoscroll);
@@ -113,7 +115,7 @@ class detail extends React.Component {
                 </div>
               </div>
               <div className="detail-text-container">
-                <h3 className='detail-title'>Quake</h3>
+                <h3 className='detail-title'>{game.title}</h3>
                 <p className='detail-description'>{game.description}</p>
                 <div className="detail-extra">
                   <div className="developer">
@@ -177,7 +179,6 @@ class detail extends React.Component {
                       <span className='label'>Supported:</span>
                       <span className='value supported-icons'>{keyboard} {mouse} {controller}</span>
                     </div>
-
                   </div>
                 </div>
               </div>

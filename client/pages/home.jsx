@@ -16,6 +16,7 @@ class Home extends React.Component {
     this.autoscroll = this.autoscroll.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.handleNext = this.handleNext.bind(this);
+    this.routeChangeCurrent = this.routeChangeCurrent.bind(this);
   }
 
   componentDidMount() {
@@ -77,6 +78,17 @@ class Home extends React.Component {
     return index;
   }
 
+  routeChange(e) {
+    const container = e.target.closest('.game-container');
+    const id = container.getAttribute('id');
+    window.location.hash = `id?${id}`;
+  }
+
+  routeChangeCurrent() {
+    const { headers, carouselIndex } = this.state;
+    window.location.hash = `id?${headers[carouselIndex].productid}`;
+  }
+
   render() {
     const { headers, carouselIndex, device } = this.state;
     if (!headers) return null;
@@ -95,7 +107,7 @@ class Home extends React.Component {
       const mouse = e.supportkbm ? <i className="fa-solid fa-computer-mouse" /> : null;
       const controller = e.supportcontroller ? <i className="fa-solid fa-gamepad" /> : null;
       return (
-        <div className="game-container row custom-column" key={e.productid} >
+        <div className="game-container row custom-column" key={e.productid} id={e.productid} onClick={this.routeChange} >
           <div className="column-one-third">
             <div className='game-img-container row'>
               <img src={e.imageurl} alt="" className='game-img'/>
@@ -128,7 +140,7 @@ class Home extends React.Component {
           <main>
             <div className="container">
               <div className="carousel-container row">
-                <img src={currentHeader.imageurl} alt="" className='carousel'/>
+                <img src={currentHeader.imageurl} alt="" className='carousel' onClick={this.routeChangeCurrent}/>
                 <div className="tabs">
                   {tabs}
                 </div>
@@ -154,7 +166,7 @@ class Home extends React.Component {
           <main>
             <div className="container">
               <div className="carousel-container row">
-                <img src={currentHeader.imageurl} alt="" className='carousel'/>
+                <img src={currentHeader.imageurl} alt="" className='carousel' onClick={this.routeChangeCurrent} />
                 <div className="tabs">
                   {tabs}
                 </div>
