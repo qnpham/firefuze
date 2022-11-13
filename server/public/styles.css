@@ -159,6 +159,14 @@ main {
   cursor: default;
 }
 
+.game-container:hover {
+  cursor: pointer;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
 .ss-carousel {
   object-fit: cover;
   width: 100%;
@@ -354,13 +362,14 @@ main {
   .detail-text-container {
     margin-top: 1.5rem;
     width: 50%;
-    position: absolute;
+    max-height: 100vh;
+    position: sticky;
+    top: 0;
     right: 1.25rem;
   }
 
   .screenshot-container {
     width: 48%;
-    height: 30rem;
     flex-direction: column;
     justify-content: space-evenly;
     padding-left: 1rem;

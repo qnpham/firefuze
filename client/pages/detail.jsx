@@ -158,7 +158,7 @@ class detail extends React.Component {
                 </div>
                 <div className="detail-text-container">
                   <div className='detail-title-container row'>
-                    <h3 className='detail-title column-full'>Quake</h3>
+                    <h3 className='detail-title column-full'>{game.title}</h3>
                     <div className="line"/>
                   </div>
                   <div className='detail-price-container'>
