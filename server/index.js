@@ -2,6 +2,7 @@ require('dotenv/config');
 const express = require('express');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
+const authorizationMiddleware = require('./authorization-middleware');
 const jwt = require('jsonwebtoken');
 require('dotenv/config');
 
@@ -59,14 +60,15 @@ app.get('/api/screenshots/:id', (req, res, next) => {
   ;
 });
 
-app.post('/api/token', (req, res, next) => {
+app.use(authorizationMiddleware);
+
+app.post('/api/cart/token', (req, res, next) => {
   let token = req.get('token');
   if (!token) {
     createTokenAndCart();
   } else {
     try {
-      const payload = jwt.verify(token, process.env.TOKEN_SECRET);
-      const { cartid } = payload;
+      const { cartid } = req.user;
       queryCart(cartid);
     } catch (err) {
       next(err);
