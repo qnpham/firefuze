@@ -13,6 +13,7 @@ class detail extends React.Component {
       screenshots: null,
       device
     };
+    this.handleResize = this.handleResize.bind(this);
   }
 
   componentDidMount() {
@@ -32,12 +33,20 @@ class detail extends React.Component {
       })
       .catch(r => console.error(r));
 
-    window.addEventListener('resize', e => {
-      const device = window.innerWidth < 768 ? 'small' : 'regular';
-      if (this.state.device !== device) {
-        this.setState({ device });
-      }
-    });
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+    clearInterval(this.state.intervalId);
+  }
+
+  handleResize() {
+
+    const device = window.innerWidth < 768 ? 'small' : 'regular';
+    if (this.state.device !== device) {
+      this.setState({ device });
+    }
   }
 
   autoscroll() {

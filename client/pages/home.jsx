@@ -18,6 +18,7 @@ class Home extends React.Component {
     this.handlePrev = this.handlePrev.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.routeChangeCurrent = this.routeChangeCurrent.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
 
   componentDidMount() {
@@ -29,12 +30,19 @@ class Home extends React.Component {
       })
       .catch(r => console.error(r));
 
-    window.addEventListener('resize', e => {
-      const device = window.innerWidth < 768 ? 'small' : 'regular';
-      if (this.state.device !== device) {
-        this.setState({ device });
-      }
-    });
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+    clearInterval(this.state.intervalId);
+  }
+
+  handleResize() {
+    const device = window.innerWidth < 768 ? 'small' : 'regular';
+    if (this.state.device !== device) {
+      this.setState({ device });
+    }
   }
 
   autoscroll() {
