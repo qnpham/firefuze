@@ -150,7 +150,7 @@ class detail extends React.Component {
           <header>
             <Navbar/>
           </header>
-          <main>
+          <main className='detail-page'>
             <div className='container'>
               <div className="row detail-container">
                 <div className="screenshot-container">

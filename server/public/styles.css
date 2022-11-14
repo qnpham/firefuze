@@ -309,7 +309,7 @@ main {
 }
 
 @media only screen and (min-width: 768px) {
-  main {
+  .detail-page {
     overflow-y: scroll;
   }
 
