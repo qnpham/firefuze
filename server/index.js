@@ -29,6 +29,34 @@ app.get('/api/header/limit/:limit', (req, res, next) => {
   ;
 });
 
+app.get('/api/game/:id', (req, res, next) => {
+  const id = Number(req.params.id);
+  const sql = `
+  SELECT *
+  from "products"
+  where "productid" = $1
+  `;
+  const params = [id];
+  db.query(sql, params)
+    .then(result => res.status(200).json(result.rows[0]))
+    .catch(err => next(err))
+  ;
+});
+
+app.get('/api/screenshots/:id', (req, res, next) => {
+  const id = Number(req.params.id);
+  const sql = `
+  SELECT "imageid", "imageurl"
+  from "screenshots"
+  where "productid" = $1
+  `;
+  const params = [id];
+  db.query(sql, params)
+    .then(result => res.status(200).json(result.rows))
+    .catch(err => next(err))
+  ;
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {

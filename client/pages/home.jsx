@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import Loading from './loading';
 
 class Home extends React.Component {
   constructor(props) {
@@ -16,23 +17,32 @@ class Home extends React.Component {
     this.autoscroll = this.autoscroll.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.handleNext = this.handleNext.bind(this);
+    this.routeChangeCurrent = this.routeChangeCurrent.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
 
   componentDidMount() {
 
-    fetch('http://localhost:3000/api/header/limit/4')
+    fetch('/api/header/limit/6')
       .then(r => r.json())
       .then(r => {
         this.setState({ headers: r }, this.autoscroll);
       })
       .catch(r => console.error(r));
 
-    window.addEventListener('resize', e => {
-      const device = window.innerWidth < 768 ? 'small' : 'regular';
-      if (this.state.device !== device) {
-        this.setState({ device });
-      }
-    });
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+    clearInterval(this.state.intervalId);
+  }
+
+  handleResize() {
+    const device = window.innerWidth < 768 ? 'small' : 'regular';
+    if (this.state.device !== device) {
+      this.setState({ device });
+    }
   }
 
   autoscroll() {
@@ -77,9 +87,21 @@ class Home extends React.Component {
     return index;
   }
 
+  routeChange(e) {
+    const container = e.target.closest('.game-container');
+    const id = container.getAttribute('id');
+    window.location.hash = `id?${id}`;
+  }
+
+  routeChangeCurrent() {
+    const { headers, carouselIndex } = this.state;
+    window.location.hash = `id?${headers[carouselIndex].productid}`;
+  }
+
   render() {
     const { headers, carouselIndex, device } = this.state;
-    if (!headers) return null;
+    if (!headers) return <Loading />;
+
     const currentHeader = headers[carouselIndex];
     const nextHeader = headers[this.convertIndex(carouselIndex, 'next')];
     const prevHeader = headers[this.convertIndex(carouselIndex, 'prev')];
@@ -95,7 +117,7 @@ class Home extends React.Component {
       const mouse = e.supportkbm ? <i className="fa-solid fa-computer-mouse" /> : null;
       const controller = e.supportcontroller ? <i className="fa-solid fa-gamepad" /> : null;
       return (
-        <div className="game-container row custom-column" key={e.productid} >
+        <div className="game-container row custom-column" key={e.productid} id={e.productid} onClick={this.routeChange} >
           <div className="column-one-third">
             <div className='game-img-container row'>
               <img src={e.imageurl} alt="" className='game-img'/>
@@ -128,7 +150,9 @@ class Home extends React.Component {
           <main>
             <div className="container">
               <div className="carousel-container row">
-                <img src={currentHeader.imageurl} alt="" className='carousel'/>
+                <a href={`#id?${headers[carouselIndex].productid}`}>
+                  <img src={currentHeader.imageurl} alt="" className='carousel'/>
+                </a>
                 <div className="tabs">
                   {tabs}
                 </div>
@@ -154,7 +178,9 @@ class Home extends React.Component {
           <main>
             <div className="container">
               <div className="carousel-container row">
-                <img src={currentHeader.imageurl} alt="" className='carousel'/>
+                <a href={`#id?${headers[carouselIndex].productid}`} className="carousel-anchor">
+                  <img src={currentHeader.imageurl} alt="" className='carousel'/>
+                </a>
                 <div className="tabs">
                   {tabs}
                 </div>

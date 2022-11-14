@@ -5,7 +5,11 @@ VALUES ('Quake', '9.99', 'https://cdn.akamai.steamstatic.com/steam/apps/2310/hea
 
       ('Fallout 76', '39.99', 'https://cdn.akamai.steamstatic.com/steam/apps/1151340/header.jpg?t=1665581700', 'Bethesda Game Studios', 'Bethesda Softworks', 'Bethesda Game Studios welcome you to Fallout 76. Twenty-five years after the bombs fall, you and your fellow Vault Dwellers emerge into post-nuclear America. Explore a vast wasteland in this open-world multiplayer addition to the Fallout story.', 'true', 'true', 'Multiplayer, Co-op, MMORPG'),
 
-      ('Destiny 2', '59.99', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/header.jpg?t=1661876523', 'Bungie', 'Bungie', 'Destiny 2 is an action MMO with a single evolving world that you and your friends can join anytime, anywhere, absolutely free.', 'true', 'true', 'Singleplayer, Multiplayer, Co-Op')
+      ('Destiny 2', '59.99', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/header.jpg?t=1661876523', 'Bungie', 'Bungie', 'Destiny 2 is an action MMO with a single evolving world that you and your friends can join anytime, anywhere, absolutely free.', 'true', 'true', 'Singleplayer, Multiplayer, Co-Op'),
+
+      ('Cyberpunk 2077', '59.99', 'https://cdn.akamai.steamstatic.com/steam/apps/1091500/header.jpg?t=1663663573', 'CD PROJEKT RED', 'CD PROJEKT RED', 'Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City — a dangerous megalopolis obsessed with power, glamor, and ceaseless body modification.', 'true', 'true', 'Singleplayer, RPG, Story'),
+
+      ('Squad', '59.99', 'https://cdn.akamai.steamstatic.com/steam/apps/393380/header.jpg?t=1668019306', 'Offworld Industries', 'Offworld Industries', 'Squad is a tactical FPS that provides authentic combat experiences through teamwork, constant communication, and realistic gameplay. It bridges the gap between arcade shooter and military simulation with 100 player battles, combined arms combat, base building, and an integrated VoIP system.', 'true', 'true', 'Multiplayer, Action, MMO')
 
 ;
 
@@ -33,7 +37,19 @@ VALUES ('1', 'https://cdn.akamai.steamstatic.com/steam/apps/2310/ss_b7d9bbc1036f
         ('4', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_a9642404e586be28f856e8f02d038828f691a5ba.600x338.jpg?t=1661876523'),
         ('4', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_01fdd090ed1dd70112ce2c6d6fc208df0a008ac7.600x338.jpg?t=1661876523'),
         ('4', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_324e79ed624f3abd7a2eea2d187d6f616be17102.600x338.jpg?t=1661876523'),
-        ('4', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_a35aaa73e605c0738a53a74abbcb53768e8f39e1.600x338.jpg?t=1661876523')
+        ('4', 'https://cdn.akamai.steamstatic.com/steam/apps/1085660/ss_a35aaa73e605c0738a53a74abbcb53768e8f39e1.600x338.jpg?t=1661876523'),
+
+        ('5', 'https://cdn.akamai.steamstatic.com/steam/apps/1091500/ss_9284d1c5b248726760233a933dbb83757d7d5d95.600x338.jpg?t=1663663573'),
+        ('5', 'https://cdn.akamai.steamstatic.com/steam/apps/1091500/ss_872822c5e50dc71f345416098d29fc3ae5cd26c1.600x338.jpg?t=1663663573'),
+        ('5', 'https://cdn.akamai.steamstatic.com/steam/apps/1091500/ss_f79fda81e6f3a37e0978054102102d71840f8b57.600x338.jpg?t=1663663573'),
+        ('5', 'https://cdn.akamai.steamstatic.com/steam/apps/1091500/ss_0002f18563d313bdd1d82c725d411408ebf762b0.600x338.jpg?t=1663663573'),
+        ('5', 'https://cdn.akamai.steamstatic.com/steam/apps/1091500/ss_526123764d1c628caa1eb62c596f1b732f416c8c.600x338.jpg?t=1663663573'),
+
+        ('6', 'https://cdn.akamai.steamstatic.com/steam/apps/393380/ss_bb13772a4c797d337cdd65e6404c826304b55ef8.600x338.jpg?t=1668019306'),
+        ('6', 'https://cdn.akamai.steamstatic.com/steam/apps/393380/ss_5c80e67f894d776aa528c3550c202ec0c3ee27c0.600x338.jpg?t=1668019306'),
+        ('6', 'https://cdn.akamai.steamstatic.com/steam/apps/393380/ss_6fabf783d6897ad15486b2051c997d9f9a8f2ab0.600x338.jpg?t=1668019306'),
+        ('6', 'https://cdn.akamai.steamstatic.com/steam/apps/393380/ss_1d5044e6029bda85c1ded182b203cbd4cd07c18b.600x338.jpg?t=1668019306'),
+        ('6', 'https://cdn.akamai.steamstatic.com/steam/apps/393380/ss_4885dee832bde8197b7d3b1310dfbd1f7a01136d.600x338.jpg?t=1668019306')
 
 ;
 -- VALUES ("title", "price", "imageUrl", "developer", "publisher", "description", "supportKBM", "supportController")

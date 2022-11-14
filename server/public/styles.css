@@ -2,17 +2,20 @@ body {
   font-family: "Lexend Deca", sans-serif;
   font-weight: 400;
   color: white;
+  overflow: hidden;
 }
 
 main {
   background-color: #1e1f22;
   height: 100vh;
+  overflow: hidden;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: Pattaya, sans-serif;
   letter-spacing: 1px;
+  font-weight: 400;
 }
 
 .carousel-container {
@@ -62,9 +65,15 @@ main {
   align-items: center;
 }
 
+.game-img-container {
+  justify-content: center;
+  align-items: center;
+}
+
 .game-img {
   width: 100%;
   object-fit: cover;
+  max-height: 6rem;
 }
 
 .game-text {
@@ -156,7 +165,114 @@ main {
   cursor: default;
 }
 
+.game-container:hover {
+  cursor: pointer;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.ss-carousel {
+  object-fit: cover;
+  width: 100%;
+  height: 13.5rem;
+}
+
+.detail-text-container {
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+  line-height: 2rem;
+}
+
+.detail-title {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 300;
+}
+
+.detail-description {
+  margin-top: 1.5rem;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.detail-extra {
+  margin-top: 2rem;
+  line-height: 1.5rem;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.value {
+  padding-left: 0.25rem;
+  font-weight: 300;
+  font-size: 0.85rem;
+}
+
+.supported-icons {
+  position: relative;
+  top: 2px;
+}
+
+.detail-price-container {
+  margin-top: 3.5rem;
+  text-align: center;
+}
+
+.detail-price {
+  font-weight: 300;
+  font-size: 1.75rem;
+}
+
+.add-to-cart-container {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  width: 7rem;
+  background-color: #343a40;
+}
+
+.add-to-cart {
+  font-size: 0.8rem;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+.side-padding {
+  padding: 0 2.5rem;
+}
+
+.logo-text {
+  color: white;
+  text-decoration: none;
+}
+
+.carousel-anchor {
+  z-index: 1;
+}
+
 @media only screen and (min-width: 575px) {
+  .logo {
+    font-size: 1.75rem;
+  }
+
+  .shopping-cart {
+    font-size: 1.25rem;
+  }
+
   .game-text {
     line-height: 1.5rem;
   }
@@ -172,9 +288,55 @@ main {
   .game-support {
     font-size: 0.6rem;
   }
+
+  .detail-title {
+    font-size: 2rem;
+  }
+
+  .detail-description {
+    font-size: 1.25rem;
+    line-height: 2rem;
+  }
+
+  .label {
+    font-size: 1rem;
+  }
+
+  .value {
+    font-size: 1rem;
+  }
+
+  .detail-price {
+    font-size: 2rem;
+  }
+
+  .detail-extra {
+    line-height: 2rem;
+  }
+
+  .add-to-cart-container {
+    width: 9rem;
+  }
+
+  .add-to-cart {
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (min-width: 768px) {
+  .detail-page {
+    overflow-y: scroll;
+  }
+
+  .detail-title {
+    text-align: left;
+    text-decoration: underline;
+  }
+
+  .product-list {
+    flex-wrap: wrap;
+  }
+
   .best-sellers {
     font-size: 1.25rem;
   }
@@ -217,13 +379,39 @@ main {
     font-size: 1.25rem;
   }
 
-  .product-list {
-    flex-wrap: wrap;
+  .detail-text-container {
+    width: 50%;
+    max-height: 100vh;
+    position: sticky;
+    top: 0;
   }
-}
 
-.side-padding {
-  padding: 0 2.5rem;
+  .screenshot-container {
+    width: 48%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 1rem;
+  }
+
+  .screenshot {
+    box-sizing: content-box;
+    object-fit: cover;
+    width: 95%;
+    height: 18rem;
+    padding: 2rem 0;
+  }
+
+  .detail-price-container {
+    margin-top: 2rem;
+  }
+
+  .detail-description {
+    margin-top: 5rem;
+  }
+
+  .detail-extra {
+    margin-top: 7rem;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -237,6 +425,18 @@ main {
 
   .best-sellers {
     font-size: 1.25rem;
+  }
+
+  .detail-price-container {
+    margin-top: 3rem;
+  }
+
+  .detail-description {
+    margin-top: 6rem;
+  }
+
+  .detail-extra {
+    margin-top: 8rem;
   }
 }
 
