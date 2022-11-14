@@ -18,7 +18,7 @@ CREATE TABLE "public"."cartitems" (
 
 CREATE TABLE "public"."carts" (
 	"cartid" serial NOT NULL,
-	"token" TEXT NOT NULL UNIQUE,
+	"token" TEXT UNIQUE,
 	CONSTRAINT "carts_pk" PRIMARY KEY ("cartid")
 ) WITH (
   OIDS=FALSE
