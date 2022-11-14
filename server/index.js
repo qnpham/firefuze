@@ -16,7 +16,7 @@ const db = new pg.Pool({
 
 const app = express();
 
-app.use(staticMiddleware, express.json());
+app.use(staticMiddleware);
 
 app.get('/api/header/limit/:limit', (req, res, next) => {
   const limit = Number(req.params.limit);
@@ -60,7 +60,7 @@ app.get('/api/screenshots/:id', (req, res, next) => {
   ;
 });
 
-app.use(authorizationMiddleware);
+app.use(authorizationMiddleware, express.json());
 
 app.post('/api/cart/token', (req, res, next) => {
   let token = req.get('token');
@@ -76,13 +76,12 @@ app.post('/api/cart/token', (req, res, next) => {
   }
 
   function createTokenAndCart() {
-    token = null;
     const sql = `
     INSERT INTO "public"."carts" ("token")
     VALUES ($1)
     returning "cartid"
     `;
-    const params = [token];
+    const params = [null];
     db.query(sql, params)
       .then(result => {
         const { cartid } = result.rows[0];
@@ -106,7 +105,7 @@ app.post('/api/cart/token', (req, res, next) => {
   }
   function queryCart(cartId) {
     const sql = `
-      SELECT "productid", "quantity", "title"
+      SELECT "productid", "quantity"
       from "cartitems"
       where "cartid" = $1
       `;
@@ -115,6 +114,21 @@ app.post('/api/cart/token', (req, res, next) => {
       .then(result => res.json(result.rows))
       .catch(err => next(err));
   }
+});
+
+app.post('/api/cart/add', (req, res, next) => {
+  const { cartid } = req.user;
+  const productId = req.body.productId;
+  const quantity = req.body.quantity;
+  const sql = `
+  INSERT INTO "cartitems" ("cartid", "productid", "quantity")
+  VALUES ($1, $2, $3)
+  returning *
+  `;
+  const params = [cartid, productId, quantity];
+  db.query(sql, params)
+    .then(result => res.json(result.rows))
+    .catch(err => next(err));
 });
 
 app.use(errorMiddleware);

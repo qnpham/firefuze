@@ -9,8 +9,7 @@ create schema "public";
 CREATE TABLE "public"."cartitems" (
 	"cartid" int NOT NULL,
 	"productid" int NOT NULL,
-	"quantity" int NOT NULL,
-	"title" TEXT NOT NULL UNIQUE
+	"quantity" int NOT NULL
 ) WITH (
   OIDS=FALSE
 );
