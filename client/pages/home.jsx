@@ -150,7 +150,9 @@ class Home extends React.Component {
           <main>
             <div className="container">
               <div className="carousel-container row">
-                <img src={currentHeader.imageurl} alt="" className='carousel' onClick={this.routeChangeCurrent}/>
+                <a href={`#id?${headers[carouselIndex].productid}`}>
+                  <img src={currentHeader.imageurl} alt="" className='carousel'/>
+                </a>
                 <div className="tabs">
                   {tabs}
                 </div>
@@ -176,7 +178,9 @@ class Home extends React.Component {
           <main>
             <div className="container">
               <div className="carousel-container row">
-                <img src={currentHeader.imageurl} alt="" className='carousel' onClick={this.routeChangeCurrent} />
+                <a href={`#id?${headers[carouselIndex].productid}`} className="carousel-anchor">
+                  <img src={currentHeader.imageurl} alt="" className='carousel'/>
+                </a>
                 <div className="tabs">
                   {tabs}
                 </div>

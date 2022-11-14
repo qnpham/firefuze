@@ -42,7 +42,6 @@ class detail extends React.Component {
   }
 
   handleResize() {
-
     const device = window.innerWidth < 768 ? 'small' : 'regular';
     if (this.state.device !== device) {
       this.setState({ device });
