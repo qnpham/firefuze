@@ -18,14 +18,14 @@ class detail extends React.Component {
   componentDidMount() {
     const gameId = this.props.id;
 
-    fetch(`http://localhost:3000/api/game/${gameId}`)
+    fetch(`/api/game/${gameId}`)
       .then(r => r.json())
       .then(r => {
         this.setState({ game: r });
       })
       .catch(r => console.error(r));
 
-    fetch(`http://localhost:3000/api/screenshots/${gameId}`)
+    fetch(`/api/screenshots/${gameId}`)
       .then(r => r.json())
       .then(r => {
         this.setState({ screenshots: r }, this.autoscroll);
