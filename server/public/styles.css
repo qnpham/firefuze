@@ -65,9 +65,15 @@ main {
   align-items: center;
 }
 
+.game-img-container {
+  justify-content: center;
+  align-items: center;
+}
+
 .game-img {
   width: 100%;
   object-fit: cover;
+  max-height: 6rem;
 }
 
 .game-text {
