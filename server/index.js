@@ -63,7 +63,16 @@ app.post('/api/token', (req, res, next) => {
   let token = req.get('token');
   if (!token) {
     createTokenAndCart();
+  } else {
+    try {
+      const payload = jwt.verify(token, process.env.TOKEN_SECRET);
+      const { cartid } = payload;
+      queryCart(cartid);
+    } catch (err) {
+      next(err);
+    }
   }
+
   function createTokenAndCart() {
     token = null;
     const sql = `
@@ -91,6 +100,17 @@ app.post('/api/token', (req, res, next) => {
     const params = [cartId, newToken];
     db.query(sql, params)
       .then(result => res.json(result.rows[0]))
+      .catch(err => next(err));
+  }
+  function queryCart(cartId) {
+    const sql = `
+      SELECT "productid", "quantity", "title"
+      from "cartitems"
+      where "cartid" = $1
+      `;
+    const params = [cartId];
+    db.query(sql, params)
+      .then(result => res.json(result.rows))
       .catch(err => next(err));
   }
 });
