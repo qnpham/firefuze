@@ -1,6 +1,7 @@
 import React from 'react';
-import Home from './pages/home';
+// import Home from './pages/home';
 import Detail from './pages/detail';
+import Cart from './components/cart';
 
 export default class App extends React.Component {
 
@@ -25,7 +26,7 @@ export default class App extends React.Component {
   render() {
     const { route, param } = this.state;
     if (route === '') {
-      return <Home />;
+      return <Cart on={false} />;
     } else if (route === 'id') {
       return <Detail id={param} />;
     }

@@ -37,6 +37,7 @@ class Cart extends React.Component {
   }
 
   render() {
+    const showing = this.props.on;
     const { cart } = this.state;
     if (!cart) return null;
     const subtotal = cart.reduce((prev, current) => {
@@ -63,7 +64,32 @@ class Cart extends React.Component {
         </div>
       );
     });
-
+    if (showing) {
+      return (
+        <div>
+          <div className='cart-container cart-on'>
+            <div className='cart-text-container'>
+              <p className='cart-text'>CART</p>
+            </div>
+            <div className="cart-game-container">
+              {games}
+            </div>
+            <div className='checkout-container'>
+              <div className='subtotal-container row'>
+                <span>Subtotal</span>
+                <span>${subtotal}</span>
+              </div>
+              <div className='checkout-btn-container'>
+                <a href="#checkout" className='checkout-btn'>CHECKOUT</a>
+              </div>
+            </div>
+          </div>
+          <a href="">
+            <div className="black black-on"/>
+          </a>
+        </div>
+      );
+    }
     return (
       <div>
         <div className='cart-container'>
@@ -84,7 +110,7 @@ class Cart extends React.Component {
           </div>
         </div>
         <a href="">
-          <div className="black" />
+          <div className="black"/>
         </a>
       </div>
     );

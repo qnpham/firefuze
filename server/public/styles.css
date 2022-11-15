@@ -268,19 +268,29 @@ main {
   position: fixed;
   width: 100%;
   height: 100vh;
-  opacity: 0.5;
   right: 0;
   bottom: 0;
   background-color: black;
+  opacity: 0;
+  z-index: 2;
 }
 
 .cart-container {
-  width: 50%;
+  width: 65%;
   height: 100%;
   background-color: #1e1f22;
   position: fixed;
   right: 0;
-  z-index: 1;
+  z-index: 3;
+  transform: translateX(20rem);
+}
+
+.black-on {
+  opacity: 0.8;
+}
+
+.cart-on {
+  transform: translateX(0);
 }
 
 .cart-text-container {
