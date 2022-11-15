@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../components/navbar';
 import Loading from './loading';
 
 class Home extends React.Component {
@@ -143,66 +142,49 @@ class Home extends React.Component {
 
     if (device === 'small') {
       return (
-        <div>
-          <header>
-            <Navbar />
-          </header>
-          <main>
-            <div className="container">
-              <div className="carousel-container row">
-                <a href={`#id?${headers[carouselIndex].productid}`}>
-                  <img src={currentHeader.imageurl} alt="" className='carousel'/>
-                </a>
-                <div className="tabs">
-                  {tabs}
-                </div>
-              </div>
-              <div className='best-sellers-container side-padding'>
-                <div className="row">
-                  <h4 className='best-sellers column-full'>Best Sellers</h4>
-                </div>
-              </div>
-              <div className='product-list side-padding'>
-                {games}
-              </div>
+
+        <div className="container">
+          <div className="carousel-container row">
+            <img src={currentHeader.imageurl} alt="" className='carousel'/>
+            <div className="tabs">
+              {tabs}
             </div>
-          </main>
+          </div>
+          <div className='best-sellers-container side-padding'>
+            <div className="row">
+              <h4 className='best-sellers column-full'>Best Sellers</h4>
+            </div>
+          </div>
+          <div className='product-list side-padding'>
+            {games}
+          </div>
         </div>
       );
     } else {
       return (
-        <div>
-          <header>
-            <Navbar />
-          </header>
-          <main>
-            <div className="container">
-              <div className="carousel-container row">
-                <a href={`#id?${headers[carouselIndex].productid}`} className="carousel-anchor">
-                  <img src={currentHeader.imageurl} alt="" className='carousel'/>
-                </a>
-                <div className="tabs">
-                  {tabs}
-                </div>
-                <div className="arrows-container">
-                  <i className="fa-solid fa-chevron-left left-arrow arrows" onClick={this.handlePrev}/>
-                  <i className="fa-solid fa-chevron-right right-arrow arrows" onClick={this.handleNext}/>
-                </div>
-                <div className="bg-carousel-container row">
-                  <img src={prevHeader.imageurl} alt="" className='prev-carousel bg-carousel'/>
-                  <img src={nextHeader.imageurl} alt="" className='next-carousel bg-carousel'/>
-                </div>
-              </div>
-              <div className='best-sellers-container side-padding'>
-                <div className="row">
-                  <h4 className='best-sellers column-full'>Best Sellers</h4>
-                </div>
-              </div>
-              <div className='product-list row side-padding'>
-                {games}
-              </div>
+        <div className="container">
+          <div className="carousel-container row">
+            <img src={currentHeader.imageurl} alt="" className='carousel'/>
+            <div className="tabs">
+              {tabs}
             </div>
-          </main>
+            <div className="arrows-container">
+              <i className="fa-solid fa-chevron-left left-arrow arrows" onClick={this.handlePrev}/>
+              <i className="fa-solid fa-chevron-right right-arrow arrows" onClick={this.handleNext}/>
+            </div>
+            <div className="bg-carousel-container row">
+              <img src={prevHeader.imageurl} alt="" className='prev-carousel bg-carousel'/>
+              <img src={nextHeader.imageurl} alt="" className='next-carousel bg-carousel'/>
+            </div>
+          </div>
+          <div className='best-sellers-container side-padding'>
+            <div className="row">
+              <h4 className='best-sellers column-full'>Best Sellers</h4>
+            </div>
+          </div>
+          <div className='product-list row side-padding'>
+            {games}
+          </div>
         </div>
       );
     }

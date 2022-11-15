@@ -1,7 +1,8 @@
 import React from 'react';
-// import Home from './pages/home';
+import Home from './pages/home';
 import Detail from './pages/detail';
 import Cart from './components/cart';
+import Navbar from './components/navbar';
 
 export default class App extends React.Component {
 
@@ -9,8 +10,19 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       route: '',
-      param: null
+      param: null,
+      cartShowing: false
     };
+    this.cartOn = this.cartOn.bind(this);
+    this.cartOff = this.cartOff.bind(this);
+  }
+
+  cartOn() {
+    this.setState({ cartShowing: true });
+  }
+
+  cartOff() {
+    this.setState({ cartShowing: false });
   }
 
   componentDidMount() {
@@ -24,11 +36,33 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { route, param } = this.state;
+    const { route, param, cartShowing } = this.state;
     if (route === '') {
-      return <Cart on={false} />;
+      return (
+        <div>
+          <Cart on={cartShowing} cartOff={this.cartOff}/>
+          <header>
+            <Navbar cartOn={this.cartOn}/>
+          </header>
+          <main>
+            <Home/>
+          </main>
+        </div>
+      );
     } else if (route === 'id') {
-      return <Detail id={param} />;
+      return (
+
+        <div>
+          <Cart on={cartShowing} cartOff={this.cartOff} />
+
+          <header>
+            <Navbar cartOn={this.cartOn}/>
+          </header>
+          <main>
+            <Detail id={param} />
+          </main>
+        </div>
+      );
     }
   }
 }

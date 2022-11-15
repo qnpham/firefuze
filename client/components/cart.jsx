@@ -84,9 +84,7 @@ class Cart extends React.Component {
               </div>
             </div>
           </div>
-          <a href="">
-            <div className="black black-on"/>
-          </a>
+          <div className="black black-on" onClick={this.props.cartOff}/>
         </div>
       );
     }
@@ -109,9 +107,7 @@ class Cart extends React.Component {
             </div>
           </div>
         </div>
-        <a href="">
-          <div className="black"/>
-        </a>
+        <div className="black"/>
       </div>
     );
   }

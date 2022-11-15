@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../components/navbar';
 import Loading from './loading';
 
 class detail extends React.Component {
@@ -112,89 +111,77 @@ class detail extends React.Component {
 
     if (device === 'small') {
       return (
-        <div>
-          <header>
-            <Navbar/>
-          </header>
-          <main>
-            <div className='container'>
-              <div className="carousel-container row">
-                <img src={currentScreenshot.imageurl} alt="" className='ss-carousel'/>
-                <div className="tabs">
-                  {tabs}
-                </div>
+        <div className='container'>
+          <div className="carousel-container row">
+            <img src={currentScreenshot.imageurl} alt="" className='ss-carousel'/>
+            <div className="tabs">
+              {tabs}
+            </div>
+          </div>
+          <div className="detail-text-container">
+            <h3 className='detail-title'>{game.title}</h3>
+            <p className='detail-description'>{game.description}</p>
+            <div className="detail-extra">
+              <div className="developer">
+                <span className='label'>Developed by:</span>
+                <span className='value'>{game.developer}</span>
               </div>
-              <div className="detail-text-container">
-                <h3 className='detail-title'>{game.title}</h3>
-                <p className='detail-description'>{game.description}</p>
-                <div className="detail-extra">
-                  <div className="developer">
-                    <span className='label'>Developed by:</span>
-                    <span className='value'>{game.developer}</span>
-                  </div>
-                  <div className="publisher">
-                    <span className='label'>Published by:</span>
-                    <span className='value'>{game.publisher}</span>
-                  </div>
-                  <div className="supported">
-                    <span className='label'>Supported:</span>
-                    <span className='value supported-icons'>{keyboard} {mouse} {controller}</span>
-                  </div>
-                  <div className='detail-price-container'>
-                    <h3 className='detail-price'>${game.price}</h3>
-                  </div>
-                  <div className='add-to-cart-container row'>
-                    <a href="#" className='add-to-cart'> ADD TO CART</a>
-                  </div>
-                </div>
+              <div className="publisher">
+                <span className='label'>Published by:</span>
+                <span className='value'>{game.publisher}</span>
+              </div>
+              <div className="supported">
+                <span className='label'>Supported:</span>
+                <span className='value supported-icons'>{keyboard} {mouse} {controller}</span>
+              </div>
+              <div className='detail-price-container'>
+                <h3 className='detail-price'>${game.price}</h3>
+              </div>
+              <div className='add-to-cart-container row'>
+                <a href="#" className='add-to-cart'> ADD TO CART</a>
               </div>
             </div>
-          </main>
+          </div>
         </div>
       );
     } else {
       return (
-        <div>
-          <header>
-            <Navbar/>
-          </header>
-          <main className='detail-page'>
-            <div className='container'>
-              <div className="row detail-container">
-                <div className="screenshot-container">
-                  {ss}
+
+        <div className='container'>
+          <div className="row detail-container">
+            <div className="screenshot-container">
+              {ss}
+            </div>
+            <div className="detail-text-container">
+              <div className='detail-title-container row'>
+                <h3 className='detail-title column-full'>{game.title}</h3>
+                <div className="line"/>
+              </div>
+              <div className='detail-price-container'>
+                <h3 className='detail-price'>${game.price}</h3>
+              </div>
+              <div className='add-to-cart-container row'>
+                <a href="#" className='add-to-cart'> ADD TO CART</a>
+              </div>
+              <p className='detail-description'>{game.description}</p>
+              <div className="detail-extra">
+                <div className="developer">
+                  <span className='label'>Developed by:</span>
+                  <span className='value'>{game.developer}</span>
                 </div>
-                <div className="detail-text-container">
-                  <div className='detail-title-container row'>
-                    <h3 className='detail-title column-full'>{game.title}</h3>
-                    <div className="line"/>
-                  </div>
-                  <div className='detail-price-container'>
-                    <h3 className='detail-price'>${game.price}</h3>
-                  </div>
-                  <div className='add-to-cart-container row'>
-                    <a href="#" className='add-to-cart'> ADD TO CART</a>
-                  </div>
-                  <p className='detail-description'>{game.description}</p>
-                  <div className="detail-extra">
-                    <div className="developer">
-                      <span className='label'>Developed by:</span>
-                      <span className='value'>{game.developer}</span>
-                    </div>
-                    <div className="publisher">
-                      <span className='label'>Published by:</span>
-                      <span className='value'>{game.publisher}</span>
-                    </div>
-                    <div className="supported">
-                      <span className='label'>Supported:</span>
-                      <span className='value supported-icons'>{keyboard} {mouse} {controller}</span>
-                    </div>
-                  </div>
+                <div className="publisher">
+                  <span className='label'>Published by:</span>
+                  <span className='value'>{game.publisher}</span>
+                </div>
+                <div className="supported">
+                  <span className='label'>Supported:</span>
+                  <span className='value supported-icons'>{keyboard} {mouse} {controller}</span>
                 </div>
               </div>
             </div>
-          </main>
+          </div>
         </div>
+
       );
     }
   }

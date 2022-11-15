@@ -5,9 +5,12 @@ function Nav(props) {
     <div className="container">
       <div className="navbar row">
         <div className="left-nav">
-          <h1 className='logo'><a href="#" className='logo-text'>FireFuze</a></h1>        </div>
+          <h1 className='logo'>
+            <a href="#" className='logo-text'>FireFuze</a>
+          </h1>
+        </div>
         <div className="right-nav">
-          <i className="fa-solid fa-cart-shopping shopping-cart" />
+          <i className="fa-solid fa-cart-shopping shopping-cart" onClick={props.cartOn} />
         </div>
       </div>
     </div>
