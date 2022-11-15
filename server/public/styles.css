@@ -275,7 +275,7 @@ main {
 }
 
 .cart-container {
-  width: 70%;
+  width: 50%;
   height: 100%;
   background-color: #1e1f22;
   position: fixed;
@@ -417,6 +417,10 @@ main {
   .add-to-cart {
     font-size: 1rem;
   }
+
+  .cart-container {
+    width: 40%;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -507,6 +511,10 @@ main {
 
   .detail-extra {
     margin-top: 7rem;
+  }
+
+  .cart-container {
+    width: 35%;
   }
 }
 
