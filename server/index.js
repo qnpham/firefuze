@@ -105,8 +105,9 @@ app.post('/api/cart/token', (req, res, next) => {
   }
   function queryCart(cartId) {
     const sql = `
-      SELECT "productid", "quantity"
+      SELECT "productid", "quantity", "title", "price", "imageurl"
       from "cartitems"
+      join "products" using ("productid")
       where "cartid" = $1
       `;
     const params = [cartId];

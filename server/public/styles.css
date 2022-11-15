@@ -264,6 +264,102 @@ main {
   z-index: 1;
 }
 
+.black {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  opacity: 0.5;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+}
+
+.cart-container {
+  width: 70%;
+  height: 100%;
+  background-color: #1e1f22;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+}
+
+.cart-text-container {
+  padding: 0.75rem 0 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid;
+}
+
+.cart-text {
+  font-size: 0.85rem;
+}
+
+.cart-game {
+  padding-top: 1rem;
+  border-bottom: 1px solid #5c5c5c;
+}
+
+.cart-game-img-container {
+  width: 100%;
+  height: 100%;
+  padding-left: 0.5rem;
+}
+
+.cart-game-img {
+  width: 90%;
+}
+
+.cart-game-title {
+  font-size: 0.75rem;
+  padding-bottom: 0.25rem;
+}
+
+.quantity-container {
+  font-size: 0.5rem;
+  font-weight: 200;
+}
+
+.quantity-text {
+  padding-right: 0.5rem;
+}
+
+.quantity-buttons {
+  display: inline;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.25rem;
+}
+
+.cart-game-price {
+  font-size: 0.75rem;
+  font-weight: 300;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.checkout-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 7.5rem;
+}
+
+.subtotal-container {
+  justify-content: space-around;
+  font-size: 1.15rem;
+}
+
+.checkout-btn-container {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+
+.checkout-btn {
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  padding: 0.25rem;
+}
+
 @media only screen and (min-width: 575px) {
   .logo {
     font-size: 1.75rem;
