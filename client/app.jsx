@@ -142,7 +142,7 @@ export default class App extends React.Component {
     } else if (route === 'id') {
       page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler}/>;
     } else if (route === 'checkout') {
-      page = <Checkout />;
+      page = <Checkout cart={cart} />;
     }
     return (
       <div>

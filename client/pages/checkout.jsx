@@ -9,7 +9,47 @@ class Checkout extends React.Component {
   }
 
   render() {
-    return <h1>hello</h1>;
+
+    const { cart } = this.props;
+    let games;
+    if (!cart) {
+      games = null;
+    } else {
+      games = cart.map(e => {
+        return (
+          <div className="cart-game column-full row" key={e.productid}>
+            <div className="cart-game-img-container column-one-third">
+              <img src={e.imageurl} alt="" className='cart-game-img' />
+            </div>
+            <div className='cart-game-text column-one-half'>
+              <div className='cart-game-title'>{e.title}</div>
+              <div className='quantity-container'>
+                <span className='quantity-text'>QNTY</span>
+                <div className='quantity-buttons'>
+                  <i className="fa-solid fa-plus" />
+                  <span className='quantity-value'>{e.quantity}</span>
+                  <i className="fa-solid fa-minus" />
+                </div>
+              </div>
+            </div>
+            <div className='cart-game-price column-one-sixth row'>${e.price}</div>
+          </div>
+        );
+      });
+    }
+
+    return (
+      <div className="container">
+        <div className="checkout-cart-container">
+          <div className="checkout-cart-text row">
+            <span className='checkout-page-text'>CART</span>
+          </div>
+          <div className="checkout-cart-game-container">
+            {games}
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 export default Checkout;

@@ -353,6 +353,21 @@ main {
   z-index: 1;
 }
 
+.checkout-cart-container {
+  padding: 1.5rem;
+}
+
+.checkout-cart-text {
+  width: 3rem;
+  border-bottom: 1px solid;
+  justify-content: center;
+  padding-bottom: 0.15rem;
+}
+
+.checkout-page-text {
+  font-size: 0.7rem;
+}
+
 @media only screen and (min-width: 575px) {
   .logo {
     font-size: 1.75rem;
