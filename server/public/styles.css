@@ -152,26 +152,6 @@ main {
   color: white;
 }
 
-.arrows:hover {
-  cursor: pointer;
-}
-
-.carousel:hover {
-  cursor: pointer;
-}
-
-.tabs:hover {
-  cursor: default;
-}
-
-.game-container:hover {
-  cursor: pointer;
-}
-
-.logo:hover {
-  cursor: pointer;
-}
-
 .ss-carousel {
   object-fit: cover;
   width: 100%;
@@ -427,7 +407,11 @@ main {
   }
 
   .cart-container {
-    width: 40%;
+    width: 50%;
+  }
+
+  .cart-game-title {
+    font-size: 0.85rem;
   }
 }
 
@@ -523,7 +507,11 @@ main {
   }
 
   .cart-container {
-    width: 35%;
+    width: 40%;
+  }
+
+  .quantity-container {
+    font-size: 0.7rem;
   }
 }
 
@@ -551,10 +539,46 @@ main {
   .detail-extra {
     margin-top: 8rem;
   }
+
+  .cart-container {
+    width: 30%;
+  }
+
+  .cart-game-title {
+    font-size: 1rem;
+  }
+
+  .quantity-container {
+    font-size: 0.8rem;
+  }
 }
 
 @media only screen and (min-width: 1100px) {
   .custom-column {
     flex-basis: 45%;
   }
+}
+
+.arrows:hover {
+  cursor: pointer;
+}
+
+.carousel:hover {
+  cursor: pointer;
+}
+
+.tabs:hover {
+  cursor: default;
+}
+
+.game-container:hover {
+  cursor: pointer;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.add-to-cart-container:hover {
+  cursor: pointer;
 }
