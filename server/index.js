@@ -124,11 +124,10 @@ app.post('/api/cart/add', (req, res, next) => {
   const sql = `
   INSERT INTO "cartitems" ("cartid", "productid", "quantity")
   VALUES ($1, $2, $3)
-  returning *
   `;
   const params = [cartid, productId, quantity];
   db.query(sql, params)
-    .then(result => res.json(result.rows))
+    .then(result => res.status(201).end())
     .catch(err => next(err));
 });
 
