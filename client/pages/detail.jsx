@@ -138,7 +138,7 @@ class detail extends React.Component {
                 <h3 className='detail-price'>${game.price}</h3>
               </div>
               <div className='add-to-cart-container row'>
-                <a href="#" className='add-to-cart' onClick={() => { this.props.addCartHandler(this.props.id); }}> ADD TO CART</a>
+                <a className='add-to-cart' onClick={() => { this.props.addCartHandler(this.props.id); }}> ADD TO CART</a>
               </div>
             </div>
           </div>
