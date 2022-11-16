@@ -4,13 +4,9 @@ class Cart extends React.Component {
   render() {
     const { cart, on } = this.props;
     let games;
-    let subtotal = 0;
     if (!cart) {
       games = null;
     } else {
-      for (let i = 0; i < cart.length; i++) {
-        subtotal += Number(cart[i].price);
-      }
       games = cart.map(e => {
         return (
           <div className="cart-game column-full row" key={e.productid}>
@@ -46,7 +42,7 @@ class Cart extends React.Component {
             <div className='checkout-container'>
               <div className='subtotal-container row'>
                 <span>Subtotal</span>
-                <span>${subtotal}</span>
+                <span>${this.props.subtotal}</span>
               </div>
               <div className='checkout-btn-container'>
                 <a href="#checkout" className='checkout-btn'>CHECKOUT</a>
@@ -69,7 +65,7 @@ class Cart extends React.Component {
             <div className='checkout-container'>
               <div className='subtotal-container row'>
                 <span>Subtotal</span>
-                <span>${subtotal}</span>
+                <span>${this.props.subtotal}</span>
               </div>
               <div className='checkout-btn-container'>
                 <a href="#checkout" className='checkout-btn'>CHECKOUT</a>
