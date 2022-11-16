@@ -44,7 +44,7 @@ class Cart extends React.Component {
                 <span>Subtotal</span>
                 <span>${this.props.subtotal}</span>
               </div>
-              <div className='checkout-btn-container'>
+              <div className='checkout-btn-container' onClick={this.props.cartOff}>
                 <a href="#checkout" className='checkout-btn'>CHECKOUT</a>
               </div>
             </div>
@@ -67,7 +67,7 @@ class Cart extends React.Component {
                 <span>Subtotal</span>
                 <span>${this.props.subtotal}</span>
               </div>
-              <div className='checkout-btn-container'>
+              <div className='checkout-btn-container' onClick={this.props.cartOff}>
                 <a href="#checkout" className='checkout-btn'>CHECKOUT</a>
               </div>
             </div>

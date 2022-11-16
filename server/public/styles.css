@@ -2,10 +2,10 @@ body {
   font-family: "Lexend Deca", sans-serif;
   font-weight: 400;
   color: white;
+  overflow: hidden;
 }
 
 main {
-  overflow: hidden;
   background-color: #1e1f22;
   height: 100vh;
 }

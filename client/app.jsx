@@ -3,6 +3,7 @@ import Home from './pages/home';
 import Detail from './pages/detail';
 import Cart from './components/cart';
 import Navbar from './components/navbar';
+import Checkout from './pages/checkout';
 
 export default class App extends React.Component {
 
@@ -140,6 +141,8 @@ export default class App extends React.Component {
       page = <Home />;
     } else if (route === 'id') {
       page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler}/>;
+    } else if (route === 'checkout') {
+      page = <Checkout />;
     }
     return (
       <div>
