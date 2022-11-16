@@ -631,11 +631,11 @@ a {
   }
 
   .left {
-    flex-basis: 45%;
+    flex-basis: 50%;
   }
 
   .right {
-    flex-basis: 45%;
+    flex-basis: 50%;
   }
 
   .checkout-game {
