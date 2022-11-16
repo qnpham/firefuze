@@ -21,24 +21,6 @@ export default class App extends React.Component {
     this.calcSubtotal = this.calcSubtotal.bind(this);
   }
 
-  calcSubtotal() {
-    const { cart } = this.state;
-    if (!cart) return;
-    let subtotal = 0;
-    for (let i = 0; i < cart.length; i++) {
-      subtotal += (cart[i].price * cart[i].quantity);
-    }
-    this.setState({ subtotal });
-  }
-
-  cartOn() {
-    this.setState({ cartShowing: true }, this.calcSubtotal);
-  }
-
-  cartOff() {
-    this.setState({ cartShowing: false });
-  }
-
   componentDidMount() {
     window.addEventListener('hashchange', e => {
       const hash = window.location.hash;
@@ -49,6 +31,36 @@ export default class App extends React.Component {
     });
     this.fetchCart();
 
+  }
+
+  calcSubtotal() {
+    const { cart } = this.state;
+    if (!cart) return;
+    let subtotal = 0;
+    for (let i = 0; i < cart.length; i++) {
+      subtotal += (cart[i].price * cart[i].quantity);
+    }
+    subtotal = Number(subtotal.toFixed(2));
+    this.setState({ subtotal });
+  }
+
+  incrementQuantity(id) {
+    fetch(`/api/game/add/${id}`, {
+      method: 'put',
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+      .then(() => this.fetchCart(true))
+      .catch(err => console.error(err));
+  }
+
+  cartOn() {
+    this.setState({ cartShowing: true }, this.calcSubtotal);
+  }
+
+  cartOff() {
+    this.setState({ cartShowing: false });
   }
 
   addCartHandler(id) {
@@ -63,14 +75,7 @@ export default class App extends React.Component {
     }
 
     if (update) {
-      fetch(`/api/game/add/${id}`, {
-        method: 'put',
-        headers: {
-          token: localStorage.getItem('token')
-        }
-      })
-        .then(() => this.fetchCart(true))
-        .catch(err => console.error(err));
+      this.incrementQuantity(id);
 
     } else {
       fetch('/api/cart/add', {
