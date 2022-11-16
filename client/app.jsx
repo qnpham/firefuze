@@ -61,7 +61,7 @@ export default class App extends React.Component {
   }
 
   cartOn() {
-    this.setState({ cartShowing: true }, this.calcSubtotal);
+    this.setState({ cartShowing: true });
   }
 
   cartOff() {
@@ -125,13 +125,19 @@ export default class App extends React.Component {
         .then(r => {
           const cart = [...r];
           if (show) {
-            this.setState({ cart }, this.cartOn);
+            this.setState({ cart }, this.showCartHandler);
           } else {
-            this.setState({ cart });
+            this.setState({ cart }, this.calcSubtotal);
           }
         })
         .catch(err => console.error(err));
     }
+
+  }
+
+  showCartHandler() {
+    this.calcSubtotal();
+    this.cartOn();
   }
 
   render() {
@@ -142,7 +148,6 @@ export default class App extends React.Component {
     } else if (route === 'id') {
       page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler}/>;
     } else if (route === 'checkout') {
-      if (subtotal === null) this.calcSubtotal();
       page = <Checkout cart={cart} subtotal={subtotal} />;
     }
     return (
