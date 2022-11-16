@@ -2,12 +2,18 @@ body {
   font-family: "Lexend Deca", sans-serif;
   font-weight: 400;
   color: white;
+  overflow: hidden;
 }
 
 main {
   overflow: hidden;
   background-color: #1e1f22;
   height: 100vh;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }
 
 .logo {
@@ -353,6 +359,50 @@ main {
   z-index: 1;
 }
 
+.checkout-cart-container {
+  padding: 1.5rem;
+  height: 100vh;
+}
+
+.checkout-cart-text-container {
+  width: 3rem;
+  border-bottom: 1px solid;
+  justify-content: center;
+  padding-bottom: 0.15rem;
+}
+
+.checkout-page-text {
+  font-size: 0.7rem;
+}
+
+.checkouts-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 3rem;
+}
+
+.total-container {
+  justify-content: space-between;
+  border: 1px solid;
+  width: 15rem;
+  padding: 0.5rem;
+  margin: auto;
+}
+
+.page-checkout-btn-container {
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.page-checkout-btn {
+  background-color: white;
+  color: black;
+  padding: 0.45rem;
+  border-radius: 2px;
+}
+
 @media only screen and (min-width: 575px) {
   .logo {
     font-size: 1.75rem;
@@ -417,6 +467,53 @@ main {
 
   .cart-game-title {
     font-size: 0.85rem;
+  }
+
+  .checkouts-container {
+    margin-top: 20rem;
+  }
+
+  .checkout-page-text {
+    font-size: 0.75rem;
+  }
+
+  .checkout-game-title {
+    font-size: 1rem;
+  }
+
+  .checkout-game-qnty {
+    font-size: 0.75rem;
+  }
+
+  .checkout-qnty-btns {
+    font-size: 0.75rem;
+  }
+
+  .checkout-game-price {
+    font-size: 1rem;
+  }
+
+  .total-container {
+    width: 18rem;
+    padding: 0.75rem;
+  }
+
+  .checkout-total-text {
+    font-size: 1.25rem;
+  }
+
+  .checkout-total-value {
+    font-size: 1.25rem;
+  }
+
+  .page-checkout-btn-container {
+    margin-top: 2rem;
+    justify-content: center;
+  }
+
+  .page-checkout-btn {
+    font-size: 1.25rem;
+    padding: 0.5rem;
   }
 }
 
@@ -522,6 +619,37 @@ main {
   .cart-game-price {
     font-size: 1rem;
   }
+
+  .checkouts-container {
+    position: initial;
+    margin-bottom: 0;
+  }
+
+  .checkout-cart-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .left {
+    flex-basis: 50%;
+  }
+
+  .right {
+    flex-basis: 50%;
+  }
+
+  .checkout-game {
+    border: 1px solid #5c5c5c;
+    margin-top: 1.25rem;
+  }
+
+  .checkout-page-text {
+    font-size: 1rem;
+  }
+
+  .checkout-cart-text-container {
+    width: 3.5rem;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -566,6 +694,10 @@ main {
   .custom-column {
     flex-basis: 45%;
   }
+}
+
+.shopping-cart:hover {
+  cursor: pointer;
 }
 
 .arrows:hover {
