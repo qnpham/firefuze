@@ -2,8 +2,7 @@ import React from 'react';
 class Cart extends React.Component {
 
   render() {
-    const showing = this.props.on;
-    const { cart } = this.props;
+    const { cart, on } = this.props;
     let games;
     let subtotal = 0;
     if (!cart) {
@@ -34,7 +33,7 @@ class Cart extends React.Component {
         );
       });
     }
-    if (showing) {
+    if (on) {
       return (
         <div>
           <div className='cart-container cart-on'>

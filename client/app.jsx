@@ -40,21 +40,43 @@ export default class App extends React.Component {
   }
 
   addCartHandler(id) {
-    fetch('/api/cart/add', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        token: localStorage.getItem('token')
-      },
-      body: JSON.stringify({
-        productId: id,
-        quantity: 1
+    const { cart } = this.state;
+    if (!cart) return;
+    let update = false;
+
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].productid === Number(id)) {
+        update = true;
+      }
+    }
+
+    if (update) {
+      fetch(`/api/game/add/${id}`, {
+        method: 'put',
+        headers: {
+          token: localStorage.getItem('token')
+        }
       })
-    })
-      .then(() => {
-        this.fetchCart(true);
+        .then(() => this.fetchCart(true))
+        .catch(err => console.error(err));
+
+    } else {
+      fetch('/api/cart/add', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+          token: localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+          productId: id,
+          quantity: 1
+        })
       })
-      .catch(err => console.error(err));
+        .then(() => {
+          this.fetchCart(true);
+        })
+        .catch(err => console.error(err));
+    }
   }
 
   fetchCart(show) {

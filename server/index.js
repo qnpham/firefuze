@@ -131,6 +131,20 @@ app.post('/api/cart/add', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.put('/api/game/add/:id', (req, res, next) => {
+  const { cartid } = req.user;
+  const productId = Number(req.params.id);
+  const sql = `
+  UPDATE "cartitems"
+  SET "quantity" = "quantity" + 1
+  WHERE "cartid" = $1 AND "productid" = $2
+  `;
+  const params = [cartid, productId];
+  db.query(sql, params)
+    .then(result => res.status(206).end())
+    .catch(err => next(err));
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
