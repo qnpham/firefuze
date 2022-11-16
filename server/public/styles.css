@@ -2,10 +2,10 @@ body {
   font-family: "Lexend Deca", sans-serif;
   font-weight: 400;
   color: white;
-  overflow: hidden;
 }
 
 main {
+  overflow: hidden;
   background-color: #1e1f22;
   height: 100vh;
 }
@@ -284,6 +284,7 @@ main {
 .cart-game {
   padding-top: 1rem;
   border-bottom: 1px solid #5c5c5c;
+  align-items: center;
 }
 
 .cart-game-img-container {
@@ -346,6 +347,10 @@ main {
   text-decoration: none;
   color: black;
   padding: 0.25rem;
+}
+
+.carousel-anchor {
+  z-index: 1;
 }
 
 @media only screen and (min-width: 575px) {
@@ -512,6 +517,10 @@ main {
 
   .quantity-container {
     font-size: 0.7rem;
+  }
+
+  .cart-game-price {
+    font-size: 1rem;
   }
 }
 
