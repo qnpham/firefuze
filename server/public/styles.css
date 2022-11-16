@@ -642,6 +642,14 @@ a {
     border: 1px solid #5c5c5c;
     margin-top: 1.25rem;
   }
+
+  .checkout-page-text {
+    font-size: 1rem;
+  }
+
+  .checkout-cart-text-container {
+    width: 3.5rem;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -686,6 +694,10 @@ a {
   .custom-column {
     flex-basis: 45%;
   }
+}
+
+.shopping-cart:hover {
+  cursor: pointer;
 }
 
 .arrows:hover {
