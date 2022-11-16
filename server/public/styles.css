@@ -376,7 +376,11 @@ a {
 }
 
 .checkouts-container {
-  margin-top: 26rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 3rem;
 }
 
 .total-container {
@@ -614,6 +618,29 @@ a {
 
   .cart-game-price {
     font-size: 1rem;
+  }
+
+  .checkouts-container {
+    position: initial;
+    margin-bottom: 0;
+  }
+
+  .checkout-cart-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .left {
+    flex-basis: 45%;
+  }
+
+  .right {
+    flex-basis: 45%;
+  }
+
+  .checkout-game {
+    border: 1px solid #5c5c5c;
+    margin-top: 1.25rem;
   }
 }
 

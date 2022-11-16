@@ -20,7 +20,7 @@ class Checkout extends React.Component {
     } else {
       games = cart.map(e => {
         return (
-          <div className="cart-game column-full row" key={e.productid}>
+          <div className="cart-game column-full row checkout-game" key={e.productid}>
             <div className="cart-game-img-container column-one-third">
               <img src={e.imageurl} alt="" className='cart-game-img' />
             </div>
@@ -44,20 +44,24 @@ class Checkout extends React.Component {
     return (
       <div className="container">
         <div className="checkout-cart-container">
-          <div className="checkout-cart-text-container row">
-            <span className='checkout-page-text'>CART</span>
-          </div>
-          <div className="checkout-cart-game-container">
-            {games}
-          </div>
-          <div className='checkouts-container'>
-            <div className='total-container row'>
-              <span className='checkout-total-text'>Total</span>
-              <span className='checkout-total-value'>${this.props.subtotal}</span>
+          <div className="left">
+            <div className="checkout-cart-text-container row">
+              <span className='checkout-page-text'>CART</span>
+            </div>
+            <div className="checkout-cart-game-container">
+              {games}
             </div>
           </div>
-          <div className="page-checkout-btn-container row">
-            <a href="#checkout" className='page-checkout-btn'>CHECKOUT</a>
+          <div className="right">
+            <div className='checkouts-container'>
+              <div className='total-container row'>
+                <span className='checkout-total-text'>Total</span>
+                <span className='checkout-total-value'>${this.props.subtotal}</span>
+              </div>
+              <div className="page-checkout-btn-container row">
+                <a href="#checkout" className='page-checkout-btn'>CHECKOUT</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
