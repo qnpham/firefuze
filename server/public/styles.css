@@ -364,7 +364,7 @@ a {
   height: 100vh;
 }
 
-.checkout-cart-text {
+.checkout-cart-text-container {
   width: 3rem;
   border-bottom: 1px solid;
   justify-content: center;
@@ -463,6 +463,53 @@ a {
 
   .cart-game-title {
     font-size: 0.85rem;
+  }
+
+  .checkouts-container {
+    margin-top: 20rem;
+  }
+
+  .checkout-page-text {
+    font-size: 0.75rem;
+  }
+
+  .checkout-game-title {
+    font-size: 1rem;
+  }
+
+  .checkout-game-qnty {
+    font-size: 0.75rem;
+  }
+
+  .checkout-qnty-btns {
+    font-size: 0.75rem;
+  }
+
+  .checkout-game-price {
+    font-size: 1rem;
+  }
+
+  .total-container {
+    width: 18rem;
+    padding: 0.75rem;
+  }
+
+  .checkout-total-text {
+    font-size: 1.25rem;
+  }
+
+  .checkout-total-value {
+    font-size: 1.25rem;
+  }
+
+  .page-checkout-btn-container {
+    margin-top: 2rem;
+    justify-content: center;
+  }
+
+  .page-checkout-btn {
+    font-size: 1.25rem;
+    padding: 0.5rem;
   }
 }
 
