@@ -8,8 +8,11 @@ class Checkout extends React.Component {
     };
   }
 
-  render() {
+  componentDidMount() {
 
+  }
+
+  render() {
     const { cart } = this.props;
     let games;
     if (!cart) {
@@ -46,6 +49,15 @@ class Checkout extends React.Component {
           </div>
           <div className="checkout-cart-game-container">
             {games}
+          </div>
+          <div className='checkouts-container'>
+            <div className='total-container row'>
+              <span>Total</span>
+              <span>${this.props.subtotal}</span>
+            </div>
+          </div>
+          <div className="page-checkout-btn-container row">
+            <a href="#checkout" className='page-checkout-btn'>CHECKOUT</a>
           </div>
         </div>
       </div>

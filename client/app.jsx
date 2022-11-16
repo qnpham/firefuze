@@ -14,7 +14,7 @@ export default class App extends React.Component {
       param: null,
       cart: null,
       cartShowing: false,
-      subtotal: 0
+      subtotal: null
     };
     this.cartOn = this.cartOn.bind(this);
     this.cartOff = this.cartOff.bind(this);
@@ -142,11 +142,12 @@ export default class App extends React.Component {
     } else if (route === 'id') {
       page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler}/>;
     } else if (route === 'checkout') {
-      page = <Checkout cart={cart} />;
+      if (subtotal === null) this.calcSubtotal();
+      page = <Checkout cart={cart} subtotal={subtotal} />;
     }
     return (
       <div>
-        <Cart on={cartShowing} cartOff={this.cartOff} cart={cart} subtotal={subtotal}/>
+        <Cart on={cartShowing} cartOff={this.cartOff} cart={cart} subtotal={subtotal} />
         <header>
           <Navbar cartOn={this.cartOn}/>
         </header>
