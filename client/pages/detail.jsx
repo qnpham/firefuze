@@ -146,7 +146,7 @@ class detail extends React.Component {
       );
     } else {
       return (
-        <div className='container'>
+        <div className='container scrollfix'>
           <div className="row detail-container">
             <div className="screenshot-container">
               {ss}

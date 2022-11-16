@@ -432,9 +432,10 @@ main {
 }
 
 @media only screen and (min-width: 768px) {
-  /* main {
+  .scrollfix {
     overflow-y: scroll;
-  } */
+    height: 100%;
+  }
 
   .detail-title {
     text-align: left;

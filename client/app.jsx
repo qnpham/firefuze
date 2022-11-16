@@ -22,15 +22,19 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    this.getUrl();
     window.addEventListener('hashchange', e => {
-      const hash = window.location.hash;
-      const newHash = hash[0] === '#' ? hash.replace('#', '') : hash;
-      const splitHash = newHash.split('?');
-      const [route, param] = splitHash;
-      this.setState({ route, param });
+      this.getUrl();
     });
     this.fetchCart();
+  }
 
+  getUrl() {
+    const hash = window.location.hash;
+    const newHash = hash[0] === '#' ? hash.replace('#', '') : hash;
+    const splitHash = newHash.split('?');
+    const [route, param] = splitHash;
+    this.setState({ route, param });
   }
 
   calcSubtotal() {
@@ -136,7 +140,6 @@ export default class App extends React.Component {
       page = <Home />;
     } else if (route === 'id') {
       page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler}/>;
-
     }
     return (
       <div>
