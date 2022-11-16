@@ -7,7 +7,7 @@ drop schema "public" cascade;
 create schema "public";
 
 CREATE TABLE "public"."cartitems" (
-	"cartid" int NOT NULL UNIQUE,
+	"cartid" int NOT NULL,
 	"productid" int NOT NULL,
 	"quantity" int NOT NULL
 ) WITH (
@@ -18,6 +18,7 @@ CREATE TABLE "public"."cartitems" (
 
 CREATE TABLE "public"."carts" (
 	"cartid" serial NOT NULL,
+	"token" TEXT UNIQUE,
 	CONSTRAINT "carts_pk" PRIMARY KEY ("cartid")
 ) WITH (
   OIDS=FALSE
