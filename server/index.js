@@ -5,6 +5,7 @@ const errorMiddleware = require('./error-middleware');
 const authorizationMiddleware = require('./authorization-middleware');
 const jwt = require('jsonwebtoken');
 require('dotenv/config');
+const stripe = require('stripe')('sk_test_51M4tgyL4bDK4Pth05cQGQ7TeYqaKECRQfSl0src6IGGnKMiyiaGN1ZhxXZeNyJbOlkyEbTWxwzhbhTaxaZltbCEK00slwCRrpg');
 
 const pg = require('pg');
 const db = new pg.Pool({
@@ -143,6 +144,23 @@ app.put('/api/game/add/:id', (req, res, next) => {
   db.query(sql, params)
     .then(result => res.status(206).end())
     .catch(err => next(err));
+});
+
+app.post('/create-payment-intent', async (req, res) => {
+  // const { items } = req.body;
+
+  // Create a PaymentIntent with the order amount and currency
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: 1500,
+    currency: 'usd',
+    automatic_payment_methods: {
+      enabled: true
+    }
+  });
+
+  res.send({
+    clientSecret: paymentIntent.client_secret
+  });
 });
 
 app.use(errorMiddleware);

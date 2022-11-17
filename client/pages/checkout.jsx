@@ -59,7 +59,7 @@ class Checkout extends React.Component {
                 <span className='checkout-total-value'>${this.props.subtotal}</span>
               </div>
               <div className="page-checkout-btn-container row">
-                <a href="#checkout" className='page-checkout-btn'>CHECKOUT</a>
+                <a href="#checkingout" className='page-checkout-btn'>CHECKOUT</a>
               </div>
             </div>
           </div>

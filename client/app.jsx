@@ -4,6 +4,11 @@ import Detail from './pages/detail';
 import Cart from './components/cart';
 import Navbar from './components/navbar';
 import Checkout from './pages/checkout';
+import CheckingOut from './pages/checkingout';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+
+const stripePromise = loadStripe('pk_test_51M4tgyL4bDK4Pth0p1jmAqW0MmEtf8VYIWIUKcgV0XhBQ967SOjcRfFvuKCZ1C7enyhP5D1cmqctxHGjYkjTlO2700USk9mYdw');
 
 export default class App extends React.Component {
 
@@ -14,7 +19,8 @@ export default class App extends React.Component {
       param: null,
       cart: null,
       cartShowing: false,
-      subtotal: null
+      subtotal: null,
+      clientSecret: null
     };
     this.cartOn = this.cartOn.bind(this);
     this.cartOff = this.cartOff.bind(this);
@@ -23,6 +29,17 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+
+    fetch('/create-payment-intent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: [{ id: 'xl-tshirt' }] })
+    })
+      .then(res => res.json())
+      .then(data => this.setState({ clientSecret: data.clientSecret }))
+      .catch(err => console.error(err));
+
+    /// /////////////
     this.getUrl();
     window.addEventListener('hashchange', e => {
       this.getUrl();
@@ -141,7 +158,17 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { route, param, cartShowing, cart, subtotal } = this.state;
+
+    const { route, param, cartShowing, cart, subtotal, clientSecret } = this.state;
+    const appearance = {
+      theme: 'night'
+    };
+    const options = {
+      clientSecret,
+      appearance
+    };
+    /// /////////////////
+
     let page;
     if (route === '') {
       page = <Home />;
@@ -149,6 +176,14 @@ export default class App extends React.Component {
       page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler}/>;
     } else if (route === 'checkout') {
       page = <Checkout cart={cart} subtotal={subtotal} />;
+    } else if (route === 'checkingout') {
+      page = <div>
+        {clientSecret && (
+        <Elements options={options} stripe={stripePromise}>
+          <CheckingOut />
+        </Elements>
+        )}
+      </div>;
     }
     return (
       <div>
