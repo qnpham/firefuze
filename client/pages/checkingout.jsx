@@ -57,8 +57,8 @@ class CheckingOut extends React.Component {
                   {games}
                   <div className="form-total-container">
                     <div className="form-total row">
-                      <span>TOTAL</span>
-                      <span>${this.props.subtotal}</span>
+                      <span className='final-checkout-total-text'>TOTAL</span>
+                      <span className='final-checkout-total-value'>${this.props.subtotal}</span>
                     </div>
                   </div>
                 </div>
