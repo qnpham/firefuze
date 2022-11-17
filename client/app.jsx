@@ -17,7 +17,7 @@ export default class App extends React.Component {
     this.state = {
       route: '',
       param: null,
-      cart: null,
+      cart: [],
       cartShowing: false,
       subtotal: null,
       clientSecret: null
@@ -57,7 +57,6 @@ export default class App extends React.Component {
 
   calcSubtotal() {
     const { cart } = this.state;
-    if (!cart) return;
     let subtotal = 0;
     for (let i = 0; i < cart.length; i++) {
       subtotal += (cart[i].price * cart[i].quantity);
@@ -87,7 +86,6 @@ export default class App extends React.Component {
 
   addCartHandler(id) {
     const { cart } = this.state;
-    if (!cart) return;
     let update = false;
 
     for (let i = 0; i < cart.length; i++) {
@@ -95,7 +93,6 @@ export default class App extends React.Component {
         update = true;
       }
     }
-
     if (update) {
       this.incrementQuantity(id);
 
