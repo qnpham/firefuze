@@ -7,6 +7,7 @@ import Checkout from './pages/checkout';
 import CheckingOut from './pages/checkingout';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import Stripe from './components/stripe';
 
 const stripePromise = loadStripe('pk_test_51M4tgyL4bDK4Pth0p1jmAqW0MmEtf8VYIWIUKcgV0XhBQ967SOjcRfFvuKCZ1C7enyhP5D1cmqctxHGjYkjTlO2700USk9mYdw');
 
@@ -174,13 +175,17 @@ export default class App extends React.Component {
     } else if (route === 'checkout') {
       page = <Checkout cart={cart} subtotal={subtotal} />;
     } else if (route === 'checkingout') {
-      page = <div>
-        {clientSecret && (
-        <Elements options={options} stripe={stripePromise}>
-          <CheckingOut />
-        </Elements>
-        )}
-      </div>;
+      if (param === 'payment') {
+        page = <div>
+          {clientSecret && (
+          <Elements options={options} stripe={stripePromise}>
+            <Stripe />
+          </Elements>
+          )}
+        </div>;
+      } else {
+        page = <CheckingOut cart={cart} subtotal={subtotal} />;
+      }
     }
     return (
       <div>

@@ -1,51 +1,73 @@
-import React, { useState } from 'react';
-import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
+import React from 'react';
+class CheckingOut extends React.Component {
 
-function CheckingOut() {
-  const stripe = useStripe();
-  const elements = useElements();
+  constructor(props) {
+    super(props);
+    this.state = {
+      userEmail: ''
+    };
+    this.handleContinue = this.handleContinue.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  const [errorMessage, setErrorMessage] = useState(null);
+  handleContinue(e) {
+    e.preventDefault();
+    window.location.hash = 'checkingout?payment';
+  }
 
-  const handleSubmit = async event => {
-    // We don't want to let default form submission happen here,
-    // which would refresh the page.
-    event.preventDefault();
+  handleChange(e) {
+    this.setState({ userEmail: e.target.value });
+  }
 
-    if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-      return;
-    }
-
-    const { error } = await stripe.confirmPayment({
-      // `Elements` instance that was used to create the Payment Element
-      elements,
-      confirmParams: {
-        return_url: 'https://example.com/order/123/complete'
-      }
+  render() {
+    const { userEmail } = this.state;
+    const games = this.props.cart.map(e => {
+      const quantity = e.quantity > 1 ? 'x' + e.quantity : null;
+      return (
+        <div key={e.productid} className="receipt-game-container row">
+          <span className='receipt-game-title'>{e.title} {quantity}</span>
+          <span className='receipt-game-price'> ${e.price}</span>
+        </div>
+      );
     });
 
-    if (error) {
-      // This point will only be reached if there is an immediate error when
-      // confirming the payment. Show error to your customer (for example, payment
-      // details incomplete)
-      setErrorMessage(error.message);
-    } else {
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
-    }
-  };
+    return (
+      <div className="container">
+        <div className='user-info'>
+          <form action="">
+            <label>
+              FIRST NAME
+              <input type="text" />
+            </label>
+            <label htmlFor="">
+              LAST NAME
+              <input type="text" />
+            </label>
+            <label htmlFor="">
+              EMAIL
+              <input type="text" onChange={this.handleChange} value={userEmail} />
+            </label>
+            <label htmlFor="">
+              ZIP
+              <input type="text" />
+            </label>
+            <div className='receipt'>
+              {games}
+              <div className="form-total-container">
+                <div className="form-total row">
+                  <span>TOTAL</span>
+                  <span>${this.props.subtotal}</span>
+                </div>
+              </div>
+            </div>
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <button disabled={!stripe}>Submit</button>
-      {/* Show error message to your customers */}
-      {errorMessage && <div>{errorMessage}</div>}
-    </form>
-  );
+            <div className='continue-container row'>
+              <button type="submit" className='continue' onClick={this.handleContinue}>CONTINUE</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
 }
-
 export default CheckingOut;
