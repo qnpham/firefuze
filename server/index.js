@@ -61,6 +61,23 @@ app.get('/api/screenshots/:id', (req, res, next) => {
   ;
 });
 
+app.post('/create-payment-intent', async (req, res) => {
+  // const { items } = req.body;
+
+  // Create a PaymentIntent with the order amount and currency
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: 2000,
+    currency: 'usd',
+    automatic_payment_methods: {
+      enabled: true
+    }
+  });
+
+  res.send({
+    clientSecret: paymentIntent.client_secret
+  });
+});
+
 app.use(authorizationMiddleware, express.json());
 
 app.post('/api/cart/token', (req, res, next) => {
@@ -146,21 +163,18 @@ app.put('/api/game/add/:id', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.post('/create-payment-intent', async (req, res) => {
-  // const { items } = req.body;
-
-  // Create a PaymentIntent with the order amount and currency
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: 1500,
-    currency: 'usd',
-    automatic_payment_methods: {
-      enabled: true
-    }
-  });
-
-  res.send({
-    clientSecret: paymentIntent.client_secret
-  });
+app.post('/api/order/add', (req, res, next) => {
+  const { cartid } = req.user;
+  const email = 'test@gmail.com';
+  const sql = `
+  INSERT INTO "orders" ("cartid", "useremail")
+  VALUES ($1, $2)
+  `;
+  const params = [cartid, email];
+  db.query(sql, params)
+    .then(result => res.status(201).end())
+    .catch(err => console.error(err))
+  ;
 });
 
 app.use(errorMiddleware);
