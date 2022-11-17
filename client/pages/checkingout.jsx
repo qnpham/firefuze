@@ -36,30 +36,37 @@ class CheckingOut extends React.Component {
       <div className="container">
         <div className='user-info'>
           <form action="">
-            <label>
-              FIRST NAME
-              <input type="text" />
-            </label>
-            <label htmlFor="">
-              LAST NAME
-              <input type="text" />
-            </label>
-            <label htmlFor="">
-              EMAIL
-              <input type="text" onChange={this.handleChange} value={userEmail} />
-            </label>
-            <div className='receipt'>
-              {games}
-              <div className="form-total-container">
-                <div className="form-total row">
-                  <span>TOTAL</span>
-                  <span>${this.props.subtotal}</span>
+            <div className="checkingout-container">
+              <div className="left-checkout">
+                <label>
+                  FIRST NAME
+                  <input type="text" />
+                </label>
+                <label htmlFor="">
+                  LAST NAME
+                  <input type="text" />
+                </label>
+                <label htmlFor="">
+                  EMAIL
+                  <input type="text" onChange={this.handleChange} value={userEmail} />
+                </label>
+              </div>
+
+              <div className="right-checkout">
+                <div className='receipt'>
+                  {games}
+                  <div className="form-total-container">
+                    <div className="form-total row">
+                      <span>TOTAL</span>
+                      <span>${this.props.subtotal}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='continue-container row'>
+                  <button type="submit" className='continue' onClick={this.handleContinue}>CONTINUE</button>
                 </div>
               </div>
-            </div>
-
-            <div className='continue-container row'>
-              <button type="submit" className='continue' onClick={this.handleContinue}>CONTINUE</button>
             </div>
           </form>
         </div>

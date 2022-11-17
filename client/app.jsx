@@ -172,6 +172,8 @@ export default class App extends React.Component {
       })
     })
       .catch(err => console.error(err));
+
+    localStorage.removeItem('token');
   }
 
   getEmail(email) {

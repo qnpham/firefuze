@@ -39,12 +39,18 @@ function Stripe(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <button disabled={!stripe}>Submit</button>
-      {/* Show error message to your customers */}
-      {errorMessage && <div>{errorMessage}</div>}
-    </form>
+    <div className="container">
+      <div className="form-container">
+        <form onSubmit={handleSubmit}>
+          <PaymentElement />
+          <div className='final-checkout-btn-container'>
+            <button disabled={!stripe} className="final-checkout-btn">CHECKOUT</button>
+          </div>
+          {/* Show error message to your customers */}
+          {errorMessage && <div>{errorMessage}</div>}
+        </form>
+      </div>
+    </div>
   );
 }
 
