@@ -165,7 +165,7 @@ app.put('/api/game/add/:id', (req, res, next) => {
 
 app.post('/api/order/add', (req, res, next) => {
   const { cartid } = req.user;
-  const email = 'test@gmail.com';
+  const { email } = req.body;
   const sql = `
   INSERT INTO "orders" ("cartid", "useremail")
   VALUES ($1, $2)

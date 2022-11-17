@@ -8,6 +8,7 @@ import CheckingOut from './pages/checkingout';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import Stripe from './components/stripe';
+import Confirmation from './pages/confirmation';
 
 const stripePromise = loadStripe('pk_test_51M4tgyL4bDK4Pth0p1jmAqW0MmEtf8VYIWIUKcgV0XhBQ967SOjcRfFvuKCZ1C7enyhP5D1cmqctxHGjYkjTlO2700USk9mYdw');
 
@@ -21,12 +22,15 @@ export default class App extends React.Component {
       cart: [],
       cartShowing: false,
       subtotal: null,
-      clientSecret: null
+      clientSecret: null,
+      userEmail: null
     };
     this.cartOn = this.cartOn.bind(this);
     this.cartOff = this.cartOff.bind(this);
     this.addCartHandler = this.addCartHandler.bind(this);
     this.calcSubtotal = this.calcSubtotal.bind(this);
+    this.getEmail = this.getEmail.bind(this);
+    this.createOrder = this.createOrder.bind(this);
   }
 
   componentDidMount() {
@@ -155,9 +159,28 @@ export default class App extends React.Component {
     this.cartOn();
   }
 
+  createOrder() {
+    const { userEmail } = this.state;
+    fetch('/api/order/add', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        token: localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        email: userEmail
+      })
+    })
+      .catch(err => console.error(err));
+  }
+
+  getEmail(email) {
+    this.setState({ userEmail: email });
+  }
+
   render() {
 
-    const { route, param, cartShowing, cart, subtotal, clientSecret } = this.state;
+    const { route, param, cartShowing, cart, subtotal, clientSecret, userEmail } = this.state;
     const appearance = {
       theme: 'night'
     };
@@ -165,7 +188,6 @@ export default class App extends React.Component {
       clientSecret,
       appearance
     };
-    /// /////////////////
 
     let page;
     if (route === '') {
@@ -175,17 +197,19 @@ export default class App extends React.Component {
     } else if (route === 'checkout') {
       page = <Checkout cart={cart} subtotal={subtotal} />;
     } else if (route === 'checkingout') {
-      if (param === 'payment') {
+      if (param === 'payment' && userEmail) {
         page = <div>
           {clientSecret && (
           <Elements options={options} stripe={stripePromise}>
-            <Stripe />
+            <Stripe createOrder={this.createOrder} />
           </Elements>
           )}
         </div>;
       } else {
-        page = <CheckingOut cart={cart} subtotal={subtotal} />;
+        page = <CheckingOut cart={cart} subtotal={subtotal} getEmail={this.getEmail}/>;
       }
+    } else if (route === 'confirmation') {
+      page = <Confirmation />;
     }
     return (
       <div>

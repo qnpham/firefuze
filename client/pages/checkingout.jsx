@@ -13,6 +13,7 @@ class CheckingOut extends React.Component {
   handleContinue(e) {
     e.preventDefault();
     window.location.hash = 'checkingout?payment';
+    this.props.getEmail(this.state.userEmail);
   }
 
   handleChange(e) {
@@ -46,10 +47,6 @@ class CheckingOut extends React.Component {
             <label htmlFor="">
               EMAIL
               <input type="text" onChange={this.handleChange} value={userEmail} />
-            </label>
-            <label htmlFor="">
-              ZIP
-              <input type="text" />
             </label>
             <div className='receipt'>
               {games}

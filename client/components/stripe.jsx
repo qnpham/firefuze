@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 
-function Stripe() {
+function Stripe(props) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -17,12 +17,12 @@ function Stripe() {
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
-
+    props.createOrder();
     const { error } = await stripe.confirmPayment({
       // `Elements` instance that was used to create the Payment Element
       elements,
       confirmParams: {
-        return_url: 'http://localhost:3000'
+        return_url: `${window.location.origin}/#confirmation`
       }
     });
 
