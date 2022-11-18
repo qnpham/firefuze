@@ -779,6 +779,18 @@ form {
   .final-checkout-btn {
     font-size: 1.15rem;
   }
+
+  .thank-you {
+    font-size: 1.75rem;
+  }
+
+  .message {
+    font-size: 1.25rem;
+  }
+
+  .confirmation-container {
+    padding: 1.5rem;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
