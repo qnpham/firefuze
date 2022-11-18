@@ -28,7 +28,7 @@ CREATE TABLE "public"."carts" (
 
 CREATE TABLE "public"."orders" (
 	"orderid" serial NOT NULL,
-	"cartId" int NOT NULL,
+	"cartid" int NOT NULL,
 	"useremail" TEXT NOT NULL,
 	CONSTRAINT "orders_pk" PRIMARY KEY ("orderid")
 ) WITH (
@@ -70,7 +70,7 @@ ALTER TABLE "cartitems" ADD CONSTRAINT "cartitems_fk0" FOREIGN KEY ("cartid") RE
 ALTER TABLE "cartitems" ADD CONSTRAINT "cartitems_fk1" FOREIGN KEY ("productid") REFERENCES "products"("productid");
 
 
-ALTER TABLE "orders" ADD CONSTRAINT "orders_fk0" FOREIGN KEY ("cartId") REFERENCES "carts"("cartid");
+ALTER TABLE "orders" ADD CONSTRAINT "orders_fk0" FOREIGN KEY ("cartid") REFERENCES "carts"("cartid");
 
 
 ALTER TABLE "screenshots" ADD CONSTRAINT "screenshots_fk0" FOREIGN KEY ("productid") REFERENCES "products"("productid");

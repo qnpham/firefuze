@@ -4,6 +4,13 @@ import Detail from './pages/detail';
 import Cart from './components/cart';
 import Navbar from './components/navbar';
 import Checkout from './pages/checkout';
+import CheckingOut from './pages/checkingout';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import Stripe from './components/stripe';
+import Confirmation from './pages/confirmation';
+
+const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
 export default class App extends React.Component {
 
@@ -12,22 +19,60 @@ export default class App extends React.Component {
     this.state = {
       route: '',
       param: null,
-      cart: null,
+      cart: [],
       cartShowing: false,
-      subtotal: null
+      subtotal: null,
+      clientSecret: null,
+      userEmail: null
     };
     this.cartOn = this.cartOn.bind(this);
     this.cartOff = this.cartOff.bind(this);
     this.addCartHandler = this.addCartHandler.bind(this);
-    this.calcSubtotal = this.calcSubtotal.bind(this);
+    this.getEmail = this.getEmail.bind(this);
+    this.createOrder = this.createOrder.bind(this);
+    this.fetchStripe = this.fetchStripe.bind(this);
+    this.fetchTotal = this.fetchTotal.bind(this);
   }
 
   componentDidMount() {
+    this.fetchCart();
+
     this.getUrl();
     window.addEventListener('hashchange', e => {
       this.getUrl();
     });
-    this.fetchCart();
+  }
+
+  fetchTotal(makeOrder) {
+    fetch('/api/cart/total', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        token: localStorage.getItem('token')
+      }
+    })
+      .then(r => r.json())
+      .then(r => {
+        if (makeOrder) {
+          this.fetchStripe();
+        } else {
+          this.setState({ subtotal: r });
+        }
+      })
+      .catch(err => console.error(err));
+  }
+
+  fetchStripe() {
+    fetch('/create-payment-intent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => this.setState({ clientSecret: data.clientSecret }))
+      .catch(err => console.error(err));
+
   }
 
   getUrl() {
@@ -36,17 +81,6 @@ export default class App extends React.Component {
     const splitHash = newHash.split('?');
     const [route, param] = splitHash;
     this.setState({ route, param });
-  }
-
-  calcSubtotal() {
-    const { cart } = this.state;
-    if (!cart) return;
-    let subtotal = 0;
-    for (let i = 0; i < cart.length; i++) {
-      subtotal += (cart[i].price * cart[i].quantity);
-    }
-    subtotal = Number(subtotal.toFixed(2));
-    this.setState({ subtotal });
   }
 
   incrementQuantity(id) {
@@ -70,7 +104,6 @@ export default class App extends React.Component {
 
   addCartHandler(id) {
     const { cart } = this.state;
-    if (!cart) return;
     let update = false;
 
     for (let i = 0; i < cart.length; i++) {
@@ -78,7 +111,6 @@ export default class App extends React.Component {
         update = true;
       }
     }
-
     if (update) {
       this.incrementQuantity(id);
 
@@ -127,7 +159,7 @@ export default class App extends React.Component {
           if (show) {
             this.setState({ cart }, this.showCartHandler);
           } else {
-            this.setState({ cart }, this.calcSubtotal);
+            this.setState({ cart }, this.fetchTotal);
           }
         })
         .catch(err => console.error(err));
@@ -136,12 +168,44 @@ export default class App extends React.Component {
   }
 
   showCartHandler() {
-    this.calcSubtotal();
+    this.fetchTotal();
     this.cartOn();
   }
 
+  createOrder() {
+    const { userEmail } = this.state;
+    fetch('/api/order/add', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        token: localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        email: userEmail
+      })
+    })
+      .then(() => {
+        localStorage.removeItem('token');
+      })
+      .catch(err => console.error(err));
+
+  }
+
+  getEmail(email) {
+    this.setState({ userEmail: email });
+  }
+
   render() {
-    const { route, param, cartShowing, cart, subtotal } = this.state;
+
+    const { route, param, cartShowing, cart, subtotal, clientSecret, userEmail } = this.state;
+    const appearance = {
+      theme: 'night'
+    };
+    const options = {
+      clientSecret,
+      appearance
+    };
+
     let page;
     if (route === '') {
       page = <Home />;
@@ -149,6 +213,20 @@ export default class App extends React.Component {
       page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler}/>;
     } else if (route === 'checkout') {
       page = <Checkout cart={cart} subtotal={subtotal} />;
+    } else if (route === 'checkingout') {
+      if (param === 'payment' && userEmail) {
+        page = <div>
+          {clientSecret && (
+          <Elements options={options} stripe={stripePromise}>
+            <Stripe createOrder={this.createOrder} />
+          </Elements>
+          )}
+        </div>;
+      } else {
+        page = <CheckingOut cart={cart} subtotal={subtotal} getEmail={this.getEmail} fetchTotal={this.fetchTotal} />;
+      }
+    } else if (route === 'confirmation') {
+      page = <Confirmation />;
     }
     return (
       <div>

@@ -52,14 +52,14 @@ class Checkout extends React.Component {
               {games}
             </div>
           </div>
-          <div className="right">
+          <div className="right row">
             <div className='checkouts-container'>
               <div className='total-container row'>
                 <span className='checkout-total-text'>Total</span>
                 <span className='checkout-total-value'>${this.props.subtotal}</span>
               </div>
               <div className="page-checkout-btn-container row">
-                <a href="#checkout" className='page-checkout-btn'>CHECKOUT</a>
+                <a href="#checkingout" className='page-checkout-btn'>CHECKOUT</a>
               </div>
             </div>
           </div>

@@ -16,6 +16,23 @@ a {
   text-decoration: none;
 }
 
+label {
+  font-size: 0.75rem;
+  font-weight: 300;
+  display: block;
+  margin-top: 1rem;
+  color: lightgray;
+}
+
+input {
+  display: block;
+  width: 100%;
+}
+
+form {
+  line-height: 2.5rem;
+}
+
 .logo {
   font-size: 1.3rem;
   font-family: Pattaya, sans-serif;
@@ -401,6 +418,73 @@ a {
   color: black;
   padding: 0.45rem;
   border-radius: 2px;
+  font-weight: 600;
+}
+
+.user-info {
+  margin-top: 3rem;
+  width: 100%;
+  padding: 0 4rem;
+}
+
+.continue-container {
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.continue {
+  background-color: white;
+  border: none;
+  padding: 0.3rem 0.45rem;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.receipt-game-container {
+  justify-content: space-between;
+}
+
+.receipt-game-title,
+.receipt-game-price {
+  font-weight: 300;
+}
+
+.form-total-container {
+  margin-top: 1.5rem;
+}
+
+.form-total {
+  justify-content: space-between;
+  border-bottom: 1px solid;
+}
+
+.receipt {
+  margin-top: 1.25rem;
+}
+
+.test {
+  width: 100%;
+  height: 50rem;
+}
+
+.form-container {
+  margin-top: 0.5rem;
+  padding: 0 1.55rem;
+}
+
+.final-checkout-btn-container {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+.final-checkout-btn {
+  background-color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 @media only screen and (min-width: 575px) {
@@ -469,10 +553,6 @@ a {
     font-size: 0.85rem;
   }
 
-  .checkouts-container {
-    margin-top: 20rem;
-  }
-
   .checkout-page-text {
     font-size: 0.75rem;
   }
@@ -514,6 +594,24 @@ a {
   .page-checkout-btn {
     font-size: 1.25rem;
     padding: 0.5rem;
+  }
+
+  .user-info {
+    margin-top: 7rem;
+  }
+
+  .checkingout-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .left-checkout {
+    flex-basis: 45%;
+  }
+
+  .right-checkout {
+    flex-basis: 45%;
   }
 }
 
@@ -636,6 +734,9 @@ a {
 
   .right {
     flex-basis: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
   }
 
   .checkout-game {
@@ -649,6 +750,21 @@ a {
 
   .checkout-cart-text-container {
     width: 3.5rem;
+  }
+
+  .receipt-game-title,
+  .receipt-game-price,
+  .final-checkout-total-text,
+  .final-checkout-total-value {
+    font-size: 1.1rem;
+  }
+
+  .continue {
+    font-size: 1.2rem;
+  }
+
+  .final-checkout-btn {
+    font-size: 1.15rem;
   }
 }
 
@@ -688,6 +804,23 @@ a {
   .quantity-container {
     font-size: 0.8rem;
   }
+
+  .receipt-game-title,
+  .receipt-game-price,
+  .final-checkout-total-text,
+  .final-checkout-total-value {
+    font-size: 1.25rem;
+  }
+
+  .total-container {
+    width: 22rem;
+  }
+
+  .checkout-total-text,
+  .checkout-total-value,
+  .page-checkout-btn {
+    font-size: 1.5rem;
+  }
 }
 
 @media only screen and (min-width: 1100px) {
@@ -721,5 +854,13 @@ a {
 }
 
 .add-to-cart-container:hover {
+  cursor: pointer;
+}
+
+.continue:hover {
+  cursor: pointer;
+}
+
+.final-checkout-btn:hover {
   cursor: pointer;
 }
