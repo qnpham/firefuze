@@ -498,6 +498,7 @@ form {
 .message {
   margin-top: 0.5rem;
   font-weight: 300;
+  line-height: 1.75rem;
 }
 
 @media only screen and (min-width: 575px) {
