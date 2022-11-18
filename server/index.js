@@ -186,7 +186,7 @@ app.get('/api/cart/total', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       total = result.rows[0].total * 100;
-      res.status(201).json(result.rows[0].total);
+      res.status(200).json(result.rows[0].total);
     })
     .catch(err => console.error(err));
 
