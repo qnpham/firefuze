@@ -52,11 +52,12 @@ export default class App extends React.Component {
       }
     })
       .then(r => r.json())
-      .then(r => {
+      .then(total => {
         if (makeOrder) {
           this.fetchStripe();
         } else {
-          this.setState({ subtotal: r });
+          const amount = !total ? 0 : total;
+          this.setState({ subtotal: amount });
         }
       })
       .catch(err => console.error(err));
