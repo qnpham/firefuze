@@ -107,7 +107,8 @@ export default class App extends React.Component {
       fetch('/api/cart/add', {
         method: 'post',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          token: localStorage.getItem('token')
         },
         body: JSON.stringify({
           productId: id,
