@@ -856,3 +856,11 @@ form {
 .add-to-cart-container:hover {
   cursor: pointer;
 }
+
+.continue:hover {
+  cursor: pointer;
+}
+
+.final-checkout-btn:hover {
+  cursor: pointer;
+}
