@@ -53,6 +53,7 @@ module.exports = {
     new webpack.EnvironmentPlugin([]),
     isDevelopment && new ReactRefreshWebpackPlugin(),
     isDevelopment && new webpack.NoEmitOnErrorsPlugin(),
-    isDevelopment && new webpack.HotModuleReplacementPlugin()
+    isDevelopment && new webpack.HotModuleReplacementPlugin(),
+    new webpack.EnvironmentPlugin(['STRIPE_PUBLIC_KEY'])
   ].filter(Boolean)
 };

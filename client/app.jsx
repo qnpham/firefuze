@@ -10,7 +10,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import Stripe from './components/stripe';
 import Confirmation from './pages/confirmation';
 
-const stripePromise = loadStripe('pk_test_51M4tgyL4bDK4Pth0p1jmAqW0MmEtf8VYIWIUKcgV0XhBQ967SOjcRfFvuKCZ1C7enyhP5D1cmqctxHGjYkjTlO2700USk9mYdw');
+const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
 export default class App extends React.Component {
 
@@ -37,8 +37,10 @@ export default class App extends React.Component {
 
     fetch('/create-payment-intent', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: [{ id: 'xl-tshirt' }] })
+      headers: {
+        'Content-Type': 'application/json',
+        token: localStorage.getItem('token')
+      }
     })
       .then(res => res.json())
       .then(data => this.setState({ clientSecret: data.clientSecret }))
@@ -105,8 +107,7 @@ export default class App extends React.Component {
       fetch('/api/cart/add', {
         method: 'post',
         headers: {
-          'Content-Type': 'application/json',
-          token: localStorage.getItem('token')
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           productId: id,
@@ -171,9 +172,11 @@ export default class App extends React.Component {
         email: userEmail
       })
     })
+      .then(() => {
+        localStorage.removeItem('token');
+      })
       .catch(err => console.error(err));
 
-    localStorage.removeItem('token');
   }
 
   getEmail(email) {
