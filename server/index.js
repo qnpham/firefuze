@@ -5,8 +5,7 @@ const errorMiddleware = require('./error-middleware');
 const authorizationMiddleware = require('./authorization-middleware');
 const jwt = require('jsonwebtoken');
 require('dotenv/config');
-const stripe = require('stripe')('sk_test_51M4tgyL4bDK4Pth05cQGQ7TeYqaKECRQfSl0src6IGGnKMiyiaGN1ZhxXZeNyJbOlkyEbTWxwzhbhTaxaZltbCEK00slwCRrpg');
-
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const pg = require('pg');
 const db = new pg.Pool({
   connectionString: 'postgres://dev:dev@localhost/firefuze',
@@ -16,7 +15,7 @@ const db = new pg.Pool({
 });
 
 const app = express();
-
+let total;
 app.use(staticMiddleware);
 
 app.get('/api/header/limit/:limit', (req, res, next) => {
@@ -62,11 +61,9 @@ app.get('/api/screenshots/:id', (req, res, next) => {
 });
 
 app.post('/create-payment-intent', async (req, res) => {
-  // const { items } = req.body;
-
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 2000,
+    amount: total,
     currency: 'usd',
     automatic_payment_methods: {
       enabled: true
@@ -175,6 +172,24 @@ app.post('/api/order/add', (req, res, next) => {
     .then(result => res.status(201).end())
     .catch(err => console.error(err))
   ;
+});
+
+app.get('/api/cart/total', (req, res, next) => {
+  const { cartid } = req.user;
+  const sql = `
+    SELECT sum("price" * "quantity") as "total"
+    from "products"
+    join "cartitems" using ("productid")
+    where "cartid" = $1
+    `;
+  const params = [cartid];
+  db.query(sql, params)
+    .then(result => {
+      total = result.rows[0].total * 100;
+      res.status(201).json(result.rows[0].total);
+    })
+    .catch(err => console.error(err));
+
 });
 
 app.use(errorMiddleware);

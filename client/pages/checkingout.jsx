@@ -14,6 +14,7 @@ class CheckingOut extends React.Component {
     e.preventDefault();
     window.location.hash = 'checkingout?payment';
     this.props.getEmail(this.state.userEmail);
+    this.props.fetchTotal(true);
   }
 
   handleChange(e) {

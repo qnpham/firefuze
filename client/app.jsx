@@ -28,30 +28,51 @@ export default class App extends React.Component {
     this.cartOn = this.cartOn.bind(this);
     this.cartOff = this.cartOff.bind(this);
     this.addCartHandler = this.addCartHandler.bind(this);
-    this.calcSubtotal = this.calcSubtotal.bind(this);
     this.getEmail = this.getEmail.bind(this);
     this.createOrder = this.createOrder.bind(this);
+    this.fetchStripe = this.fetchStripe.bind(this);
+    this.fetchTotal = this.fetchTotal.bind(this);
   }
 
   componentDidMount() {
+    this.fetchCart();
 
-    fetch('/create-payment-intent', {
-      method: 'POST',
+    this.getUrl();
+    window.addEventListener('hashchange', e => {
+      this.getUrl();
+    });
+  }
+
+  fetchTotal(makeOrder) {
+    fetch('/api/cart/total', {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         token: localStorage.getItem('token')
+      }
+    })
+      .then(r => r.json())
+      .then(r => {
+        if (makeOrder) {
+          this.fetchStripe();
+        } else {
+          this.setState({ subtotal: r });
+        }
+      })
+      .catch(err => console.error(err));
+  }
+
+  fetchStripe() {
+    fetch('/create-payment-intent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
       }
     })
       .then(res => res.json())
       .then(data => this.setState({ clientSecret: data.clientSecret }))
       .catch(err => console.error(err));
 
-    /// /////////////
-    this.getUrl();
-    window.addEventListener('hashchange', e => {
-      this.getUrl();
-    });
-    this.fetchCart();
   }
 
   getUrl() {
@@ -60,16 +81,6 @@ export default class App extends React.Component {
     const splitHash = newHash.split('?');
     const [route, param] = splitHash;
     this.setState({ route, param });
-  }
-
-  calcSubtotal() {
-    const { cart } = this.state;
-    let subtotal = 0;
-    for (let i = 0; i < cart.length; i++) {
-      subtotal += (cart[i].price * cart[i].quantity);
-    }
-    subtotal = Number(subtotal.toFixed(2));
-    this.setState({ subtotal });
   }
 
   incrementQuantity(id) {
@@ -148,7 +159,7 @@ export default class App extends React.Component {
           if (show) {
             this.setState({ cart }, this.showCartHandler);
           } else {
-            this.setState({ cart }, this.calcSubtotal);
+            this.setState({ cart }, this.fetchTotal);
           }
         })
         .catch(err => console.error(err));
@@ -157,7 +168,7 @@ export default class App extends React.Component {
   }
 
   showCartHandler() {
-    this.calcSubtotal();
+    this.fetchTotal();
     this.cartOn();
   }
 
@@ -212,7 +223,7 @@ export default class App extends React.Component {
           )}
         </div>;
       } else {
-        page = <CheckingOut cart={cart} subtotal={subtotal} getEmail={this.getEmail}/>;
+        page = <CheckingOut cart={cart} subtotal={subtotal} getEmail={this.getEmail} fetchTotal={this.fetchTotal} />;
       }
     } else if (route === 'confirmation') {
       page = <Confirmation />;
