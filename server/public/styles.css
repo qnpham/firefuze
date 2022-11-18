@@ -418,6 +418,7 @@ form {
   color: black;
   padding: 0.45rem;
   border-radius: 2px;
+  font-weight: 600;
 }
 
 .user-info {
@@ -468,6 +469,7 @@ form {
 }
 
 .form-container {
+  margin-top: 0.5rem;
   padding: 0 1.55rem;
 }
 
@@ -549,10 +551,6 @@ form {
 
   .cart-game-title {
     font-size: 0.85rem;
-  }
-
-  .checkouts-container {
-    margin-top: 20rem;
   }
 
   .checkout-page-text {
@@ -736,6 +734,9 @@ form {
 
   .right {
     flex-basis: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
   }
 
   .checkout-game {
@@ -749,6 +750,21 @@ form {
 
   .checkout-cart-text-container {
     width: 3.5rem;
+  }
+
+  .receipt-game-title,
+  .receipt-game-price,
+  .final-checkout-total-text,
+  .final-checkout-total-value {
+    font-size: 1.1rem;
+  }
+
+  .continue {
+    font-size: 1.2rem;
+  }
+
+  .final-checkout-btn {
+    font-size: 1.15rem;
   }
 }
 
@@ -794,6 +810,16 @@ form {
   .final-checkout-total-text,
   .final-checkout-total-value {
     font-size: 1.25rem;
+  }
+
+  .total-container {
+    width: 22rem;
+  }
+
+  .checkout-total-text,
+  .checkout-total-value,
+  .page-checkout-btn {
+    font-size: 1.5rem;
   }
 }
 
