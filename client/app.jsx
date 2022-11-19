@@ -32,7 +32,8 @@ export default class App extends React.Component {
     this.createOrder = this.createOrder.bind(this);
     this.fetchStripe = this.fetchStripe.bind(this);
     this.fetchTotal = this.fetchTotal.bind(this);
-    this.setQuantity = this.setQuantity.bind(this);
+    this.incQuantity = this.incQuantity.bind(this);
+    this.decQuantity = this.decQuantity.bind(this);
     this.deleteGame = this.deleteGame.bind(this);
   }
 
@@ -45,41 +46,59 @@ export default class App extends React.Component {
     });
   }
 
-  setQuantity(id, increment, show) {
+  incQuantity(id, show) {
     const { cart } = this.state;
     let newQuantity;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].productid === Number(id)) {
-        if (increment) {
-          newQuantity = cart[i].quantity + 1;
+        newQuantity = cart[i].quantity + 1;
+      }
+    }
+    fetch('/api/cart/quantity', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        token: localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        quantity: newQuantity,
+        productid: id
+      })
+    })
+      .then(() => {
+        if (show) {
+          this.fetchCart(true);
         } else {
-          newQuantity = cart[i].quantity - 1;
+          this.fetchCart();
         }
+      })
+      .catch(err => console.error(err));
+  }
+
+  decQuantity(id) {
+    const { cart } = this.state;
+    let newQuantity;
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].productid === Number(id)) {
+        newQuantity = cart[i].quantity - 1;
       }
     }
     if (newQuantity === 0) {
       this.deleteGame(id);
-    } else {
-      fetch('/api/cart/quantity', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          token: localStorage.getItem('token')
-        },
-        body: JSON.stringify({
-          quantity: newQuantity,
-          productid: id
-        })
-      })
-        .then(() => {
-          if (show) {
-            this.fetchCart(true);
-          } else {
-            this.fetchCart();
-          }
-        })
-        .catch(err => console.error(err));
     }
+    fetch('/api/cart/quantity', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        token: localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        quantity: newQuantity,
+        productid: id
+      })
+    })
+      .then(() => this.fetchCart())
+      .catch(err => console.error(err));
   }
 
   deleteGame(id) {
@@ -152,7 +171,7 @@ export default class App extends React.Component {
       }
     }
     if (update) {
-      this.setQuantity(id, true, true);
+      this.incQuantity(id, true);
 
     } else {
       fetch('/api/cart/add', {
@@ -252,7 +271,7 @@ export default class App extends React.Component {
     } else if (route === 'id') {
       page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler}/>;
     } else if (route === 'checkout') {
-      page = <Checkout cart={cart} subtotal={subtotal} setQuantity={this.setQuantity} />;
+      page = <Checkout cart={cart} subtotal={subtotal} incQuantity={this.incQuantity} decQuantity={this.decQuantity} />;
     } else if (route === 'checkingout') {
       if (param === 'payment' && userEmail) {
         page = <div>
@@ -270,7 +289,7 @@ export default class App extends React.Component {
     }
     return (
       <div>
-        <Cart on={cartShowing} cartOff={this.cartOff} cart={cart} subtotal={subtotal} setQuantity={this.setQuantity} />
+        <Cart on={cartShowing} cartOff={this.cartOff} cart={cart} subtotal={subtotal} incQuantity={this.incQuantity} decQuantity={this.decQuantity} />
         <header>
           <Navbar cartOn={this.cartOn}/>
         </header>

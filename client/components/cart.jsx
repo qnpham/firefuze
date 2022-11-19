@@ -9,13 +9,13 @@ class Cart extends React.Component {
   plusHandler(e) {
     const container = e.target.closest('.cart-game');
     const id = container.getAttribute('id');
-    this.props.setQuantity(id, true);
+    this.props.incQuantity(id);
   }
 
   minusHandler(e) {
     const container = e.target.closest('.cart-game');
     const id = container.getAttribute('id');
-    this.props.setQuantity(id, false);
+    this.props.decQuantity(id);
   }
 
   render() {
