@@ -32,6 +32,8 @@ export default class App extends React.Component {
     this.createOrder = this.createOrder.bind(this);
     this.fetchStripe = this.fetchStripe.bind(this);
     this.fetchTotal = this.fetchTotal.bind(this);
+    this.incQuantity = this.incQuantity.bind(this);
+    this.decQuantity = this.decQuantity.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +43,52 @@ export default class App extends React.Component {
     window.addEventListener('hashchange', e => {
       this.getUrl();
     });
+  }
+
+  incQuantity(id) {
+    const { cart } = this.state;
+    let newQuantity;
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].productid === Number(id)) {
+        newQuantity = cart[i].quantity + 1;
+      }
+    }
+    fetch('/api/cart/quantity', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        token: localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        quantity: newQuantity,
+        productid: id
+      })
+    })
+      .then(() => this.fetchCart())
+      .catch(err => console.error(err));
+  }
+
+  decQuantity(id) {
+    const { cart } = this.state;
+    let newQuantity;
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].productid === Number(id)) {
+        newQuantity = cart[i].quantity - 1;
+      }
+    }
+    fetch('/api/cart/quantity', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        token: localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        quantity: newQuantity,
+        productid: id
+      })
+    })
+      .then(() => this.fetchCart())
+      .catch(err => console.error(err));
   }
 
   fetchTotal(makeOrder) {
@@ -231,7 +279,7 @@ export default class App extends React.Component {
     }
     return (
       <div>
-        <Cart on={cartShowing} cartOff={this.cartOff} cart={cart} subtotal={subtotal} />
+        <Cart on={cartShowing} cartOff={this.cartOff} cart={cart} subtotal={subtotal} incQuantity={this.incQuantity} decQuantity={this.decQuantity} />
         <header>
           <Navbar cartOn={this.cartOn}/>
         </header>
