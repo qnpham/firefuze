@@ -34,6 +34,7 @@ export default class App extends React.Component {
     this.fetchTotal = this.fetchTotal.bind(this);
     this.incQuantity = this.incQuantity.bind(this);
     this.decQuantity = this.decQuantity.bind(this);
+    this.deleteGame = this.deleteGame.bind(this);
   }
 
   componentDidMount() {
@@ -76,6 +77,9 @@ export default class App extends React.Component {
         newQuantity = cart[i].quantity - 1;
       }
     }
+    if (newQuantity === 0) {
+      this.deleteGame(id);
+    }
     fetch('/api/cart/quantity', {
       method: 'PUT',
       headers: {
@@ -88,6 +92,17 @@ export default class App extends React.Component {
       })
     })
       .then(() => this.fetchCart())
+      .catch(err => console.error(err));
+  }
+
+  deleteGame(id) {
+    fetch(`/api/cart/delete/${id}`, {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+        token: localStorage.getItem('token')
+      }
+    }).then(() => this.fetchCart())
       .catch(err => console.error(err));
   }
 
