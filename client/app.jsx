@@ -46,7 +46,7 @@ export default class App extends React.Component {
     });
   }
 
-  incQuantity(id) {
+  incQuantity(id, show) {
     const { cart } = this.state;
     let newQuantity;
     for (let i = 0; i < cart.length; i++) {
@@ -65,7 +65,13 @@ export default class App extends React.Component {
         productid: id
       })
     })
-      .then(() => this.fetchCart())
+      .then(() => {
+        if (show) {
+          this.fetchCart(true);
+        } else {
+          this.fetchCart();
+        }
+      })
       .catch(err => console.error(err));
   }
 
@@ -147,17 +153,6 @@ export default class App extends React.Component {
     this.setState({ route, param });
   }
 
-  incrementQuantity(id) {
-    fetch(`/api/game/add/${id}`, {
-      method: 'put',
-      headers: {
-        token: localStorage.getItem('token')
-      }
-    })
-      .then(() => this.fetchCart(true))
-      .catch(err => console.error(err));
-  }
-
   cartOn() {
     this.setState({ cartShowing: true });
   }
@@ -176,7 +171,7 @@ export default class App extends React.Component {
       }
     }
     if (update) {
-      this.incrementQuantity(id);
+      this.incQuantity(id, true);
 
     } else {
       fetch('/api/cart/add', {
