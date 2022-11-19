@@ -146,20 +146,6 @@ app.post('/api/cart/add', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.put('/api/game/add/:id', (req, res, next) => {
-  const { cartid } = req.user;
-  const productId = Number(req.params.id);
-  const sql = `
-  UPDATE "cartitems"
-  SET "quantity" = "quantity" + 1
-  WHERE "cartid" = $1 AND "productid" = $2
-  `;
-  const params = [cartid, productId];
-  db.query(sql, params)
-    .then(result => res.status(206).end())
-    .catch(err => next(err));
-});
-
 app.post('/api/order/add', (req, res, next) => {
   const { cartid } = req.user;
   const { email } = req.body;
@@ -190,6 +176,34 @@ app.get('/api/cart/total', (req, res, next) => {
     })
     .catch(err => console.error(err));
 
+});
+
+app.put('/api/cart/quantity', (req, res, next) => {
+  const { quantity } = req.body;
+  const { cartid } = req.user;
+  const { productid } = req.body;
+  const sql = `
+  UPDATE "cartitems"
+  SET "quantity" = $1
+  WHERE "cartid" = $2 AND "productid" = $3
+  `;
+  const params = [quantity, cartid, productid];
+  db.query(sql, params)
+    .then(r => res.status(204).end())
+    .catch(err => next(err));
+});
+
+app.delete('/api/cart/delete/:id', (req, res, next) => {
+  const { cartid } = req.user;
+  const id = req.params.id;
+  const sql = `
+  delete from "cartitems"
+  where "productid" = $1 AND "cartid" = $2
+  `;
+  const params = [id, cartid];
+  db.query(sql, params)
+    .then(r => res.status(200).end())
+    .catch(err => next(err));
 });
 
 app.use(errorMiddleware);

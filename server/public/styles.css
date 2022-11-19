@@ -501,6 +501,23 @@ form {
   line-height: 1.75rem;
 }
 
+.plus {
+  font-size: 0.55rem;
+}
+
+.minus {
+  font-size: 0.55rem;
+}
+
+.button-icon {
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+  border: none;
+  color: white;
+  background-color: transparent;
+}
+
 @media only screen and (min-width: 575px) {
   .logo {
     font-size: 1.75rem;
@@ -626,6 +643,14 @@ form {
 
   .right-checkout {
     flex-basis: 45%;
+  }
+
+  .plus {
+    font-size: 0.6rem;
+  }
+
+  .minus {
+    font-size: 0.6rem;
   }
 }
 
@@ -792,6 +817,14 @@ form {
   .confirmation-container {
     padding: 1.5rem;
   }
+
+  .plus {
+    font-size: 0.6rem;
+  }
+
+  .minus {
+    font-size: 0.6rem;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -846,6 +879,14 @@ form {
   .checkout-total-value,
   .page-checkout-btn {
     font-size: 1.5rem;
+  }
+
+  .plus {
+    font-size: 0.65rem;
+  }
+
+  .minus {
+    font-size: 0.65rem;
   }
 }
 

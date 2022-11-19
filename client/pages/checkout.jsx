@@ -6,10 +6,20 @@ class Checkout extends React.Component {
     this.state = {
       null: null
     };
+    this.plusHandler = this.plusHandler.bind(this);
+    this.minusHandler = this.minusHandler.bind(this);
   }
 
-  componentDidMount() {
+  plusHandler(e) {
+    const container = e.target.closest('.cart-game');
+    const id = container.getAttribute('id');
+    this.props.incQuantity(id);
+  }
 
+  minusHandler(e) {
+    const container = e.target.closest('.cart-game');
+    const id = container.getAttribute('id');
+    this.props.decQuantity(id);
   }
 
   render() {
@@ -20,7 +30,7 @@ class Checkout extends React.Component {
     } else {
       games = cart.map(e => {
         return (
-          <div className="cart-game column-full row checkout-game" key={e.productid}>
+          <div className="cart-game column-full row checkout-game" key={e.productid} id={e.productid} >
             <div className="cart-game-img-container column-one-third">
               <img src={e.imageurl} alt="" className='cart-game-img' />
             </div>
@@ -29,9 +39,15 @@ class Checkout extends React.Component {
               <div className='quantity-container'>
                 <span className='quantity-text checkout-game-qnty'>QNTY</span>
                 <div className='quantity-buttons checkout-qnty-btns'>
-                  <i className="fa-solid fa-plus" />
+                  <button className="button-icon">
+                    <i className="fa-solid fa-plus plus" onClick={this.plusHandler} />
+
+                  </button>
                   <span className='quantity-value'>{e.quantity}</span>
-                  <i className="fa-solid fa-minus" />
+                  <button className="button-icon">
+                    <i className="fa-solid fa-minus minus" onClick={this.minusHandler} />
+
+                  </button>
                 </div>
               </div>
             </div>
