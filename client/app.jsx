@@ -271,7 +271,7 @@ export default class App extends React.Component {
     } else if (route === 'id') {
       page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler}/>;
     } else if (route === 'checkout') {
-      page = <Checkout cart={cart} subtotal={subtotal} />;
+      page = <Checkout cart={cart} subtotal={subtotal} incQuantity={this.incQuantity} decQuantity={this.decQuantity} />;
     } else if (route === 'checkingout') {
       if (param === 'payment' && userEmail) {
         page = <div>
