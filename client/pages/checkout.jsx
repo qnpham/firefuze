@@ -13,13 +13,13 @@ class Checkout extends React.Component {
   plusHandler(e) {
     const container = e.target.closest('.cart-game');
     const id = container.getAttribute('id');
-    this.props.incQuantity(id);
+    this.props.setQuantity(id, true);
   }
 
   minusHandler(e) {
     const container = e.target.closest('.cart-game');
     const id = container.getAttribute('id');
-    this.props.decQuantity(id);
+    this.props.setQuantity(id, false);
   }
 
   render() {
