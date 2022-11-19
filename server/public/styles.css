@@ -890,3 +890,11 @@ form {
 .final-checkout-btn:hover {
   cursor: pointer;
 }
+
+.plus:hover {
+  cursor: pointer;
+}
+
+.minus:hover {
+  cursor: pointer;
+}

@@ -35,9 +35,9 @@ class Cart extends React.Component {
               <div className='quantity-container'>
                 <span className='quantity-text'>QNTY</span>
                 <div className='quantity-buttons'>
-                  <i className="fa-solid fa-plus" onClick={this.plusHandler} />
+                  <i className="fa-solid fa-plus plus" onClick={this.plusHandler} />
                   <span className='quantity-value'>{e.quantity}</span>
-                  <i className="fa-solid fa-minus" onClick={this.minusHandler} />
+                  <i className="fa-solid fa-minus minus" onClick={this.minusHandler} />
                 </div>
               </div>
             </div>
