@@ -35,9 +35,13 @@ class Cart extends React.Component {
               <div className='quantity-container'>
                 <span className='quantity-text'>QNTY</span>
                 <div className='quantity-buttons'>
-                  <i className="fa-solid fa-plus plus" onClick={this.plusHandler} />
+                  <button className='button-icon'>
+                    <i className="fa-solid fa-plus plus" onClick={this.plusHandler} />
+                  </button>
                   <span className='quantity-value'>{e.quantity}</span>
-                  <i className="fa-solid fa-minus minus" onClick={this.minusHandler} />
+                  <button className='button-icon'>
+                    <i className="fa-solid fa-minus minus" onClick={this.minusHandler} />
+                  </button>
                 </div>
               </div>
             </div>
