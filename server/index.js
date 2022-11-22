@@ -1,4 +1,5 @@
 require('dotenv/config');
+const path = require('path');
 const express = require('express');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
@@ -8,7 +9,7 @@ require('dotenv/config');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const pg = require('pg');
 const db = new pg.Pool({
-  connectionString: 'postgres://dev:dev@localhost/firefuze',
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
@@ -204,6 +205,16 @@ app.delete('/api/cart/delete/:id', (req, res, next) => {
   db.query(sql, params)
     .then(r => res.status(200).end())
     .catch(err => next(err));
+});
+
+app.use('/api', (req, res) => {
+  res.status(404).json({ error: `cannot ${req.method} ${req.url}` });
+});
+
+app.use((req, res) => {
+  res.sendFile('/index.html', {
+    root: path.join(__dirname, 'public')
+  });
 });
 
 app.use(errorMiddleware);
