@@ -2,12 +2,10 @@ body {
   font-family: "Lexend Deca", sans-serif;
   font-weight: 400;
   color: white;
-  overflow: hidden;
+  background-color: #1e1f22;
 }
 
 main {
-  overflow: hidden;
-  background-color: #1e1f22;
   height: 100vh;
 }
 
@@ -33,6 +31,10 @@ form {
   line-height: 2.5rem;
 }
 
+.container {
+  overflow: hidden;
+}
+
 .logo {
   font-size: 1.3rem;
   font-family: Pattaya, sans-serif;
@@ -55,7 +57,7 @@ form {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 0.25rem 2.25rem;
+  padding: 1rem 2.25rem;
 }
 
 .shopping-cart {
@@ -263,7 +265,7 @@ form {
 }
 
 .black {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100vh;
   right: 0;
@@ -516,6 +518,19 @@ form {
   border: none;
   color: white;
   background-color: transparent;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin-top: 15rem;
+}
+
+.error {
+  font-weight: 300;
+  text-align: center;
+  margin-top: 2rem;
 }
 
 @media only screen and (min-width: 575px) {
@@ -896,38 +911,15 @@ form {
   }
 }
 
-.shopping-cart:hover {
-  cursor: pointer;
-}
-
-.arrows:hover {
-  cursor: pointer;
-}
-
-.carousel:hover {
-  cursor: pointer;
-}
-
-.tabs:hover {
-  cursor: default;
-}
-
-.game-container:hover {
-  cursor: pointer;
-}
-
-.logo:hover {
-  cursor: pointer;
-}
-
-.add-to-cart-container:hover {
-  cursor: pointer;
-}
-
-.continue:hover {
-  cursor: pointer;
-}
-
-.final-checkout-btn:hover {
+.shopping-cart:hover,
+.arrows:hover,
+.carousel:hover,
+.tabs:hover,
+.game-container:hover,
+.logo:hover,
+.add-to-cart-container:hover,
+.continue:hover,
+.final-checkout-btn:hover,
+.button-icon:hover {
   cursor: pointer;
 }

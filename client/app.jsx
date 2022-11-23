@@ -9,6 +9,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import Stripe from './components/stripe';
 import Confirmation from './pages/confirmation';
+import NetworkError from './pages/networkerror';
 
 const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
@@ -46,6 +47,10 @@ export default class App extends React.Component {
     });
   }
 
+  networkError() {
+    window.location.hash = 'networkerror';
+  }
+
   incQuantity(id, show) {
     const { cart } = this.state;
     let newQuantity;
@@ -72,7 +77,10 @@ export default class App extends React.Component {
           this.fetchCart();
         }
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        this.networkError();
+        console.error(err);
+      });
   }
 
   decQuantity(id) {
@@ -98,7 +106,10 @@ export default class App extends React.Component {
       })
     })
       .then(() => this.fetchCart())
-      .catch(err => console.error(err));
+      .catch(err => {
+        this.networkError();
+        console.error(err);
+      });
   }
 
   deleteGame(id) {
@@ -109,7 +120,10 @@ export default class App extends React.Component {
         token: localStorage.getItem('token')
       }
     }).then(() => this.fetchCart())
-      .catch(err => console.error(err));
+      .catch(err => {
+        this.networkError();
+        console.error(err);
+      });
   }
 
   fetchTotal(makeOrder) {
@@ -129,7 +143,10 @@ export default class App extends React.Component {
           this.setState({ subtotal: amount });
         }
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        this.networkError();
+        console.error(err);
+      });
   }
 
   fetchStripe() {
@@ -141,7 +158,10 @@ export default class App extends React.Component {
     })
       .then(res => res.json())
       .then(data => this.setState({ clientSecret: data.clientSecret }))
-      .catch(err => console.error(err));
+      .catch(err => {
+        this.props.networkError();
+        console.error(err);
+      });
 
   }
 
@@ -188,7 +208,10 @@ export default class App extends React.Component {
         .then(() => {
           this.fetchCart(true);
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+          this.networkError();
+          console.error(err);
+        });
     }
   }
 
@@ -203,8 +226,11 @@ export default class App extends React.Component {
           const { token } = r;
           localStorage.setItem('token', token);
         })
-        .catch(err => console.error(err))
-      ;
+        .catch(err => {
+          this.networkError();
+          console.error(err);
+        });
+
     } else {
       fetch('/api/cart/token', {
         method: 'POST',
@@ -221,7 +247,10 @@ export default class App extends React.Component {
             this.setState({ cart }, this.fetchTotal);
           }
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+          this.networkError();
+          console.error(err);
+        });
     }
 
   }
@@ -246,7 +275,10 @@ export default class App extends React.Component {
       .then(() => {
         localStorage.removeItem('token');
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        this.networkError();
+        console.error(err);
+      });
 
   }
 
@@ -267,9 +299,9 @@ export default class App extends React.Component {
 
     let page;
     if (route === '') {
-      page = <Home />;
+      page = <Home networkError={this.networkError}/>;
     } else if (route === 'id') {
-      page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler}/>;
+      page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler} networkError={this.networkError}/>;
     } else if (route === 'checkout') {
       page = <Checkout cart={cart} subtotal={subtotal} incQuantity={this.incQuantity} decQuantity={this.decQuantity} />;
     } else if (route === 'checkingout') {
@@ -286,6 +318,8 @@ export default class App extends React.Component {
       }
     } else if (route === 'confirmation') {
       page = <Confirmation />;
+    } else if (route === 'networkerror') {
+      page = <NetworkError />;
     }
     return (
       <div>
