@@ -55,7 +55,7 @@ form {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 0.25rem 2.25rem;
+  padding: 1rem 2.25rem;
 }
 
 .shopping-cart {
@@ -518,6 +518,19 @@ form {
   background-color: transparent;
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin-top: 20rem;
+}
+
+.error {
+  font-weight: 300;
+  text-align: center;
+  margin-top: 2rem;
+}
+
 @media only screen and (min-width: 575px) {
   .logo {
     font-size: 1.75rem;
@@ -896,38 +909,15 @@ form {
   }
 }
 
-.shopping-cart:hover {
-  cursor: pointer;
-}
-
-.arrows:hover {
-  cursor: pointer;
-}
-
-.carousel:hover {
-  cursor: pointer;
-}
-
-.tabs:hover {
-  cursor: default;
-}
-
-.game-container:hover {
-  cursor: pointer;
-}
-
-.logo:hover {
-  cursor: pointer;
-}
-
-.add-to-cart-container:hover {
-  cursor: pointer;
-}
-
-.continue:hover {
-  cursor: pointer;
-}
-
-.final-checkout-btn:hover {
+.shopping-cart:hover,
+.arrows:hover,
+.carousel:hover,
+.tabs:hover,
+.game-container:hover,
+.logo:hover,
+.add-to-cart-container:hover,
+.continue:hover,
+.final-checkout-btn:hover,
+.button-icon:hover {
   cursor: pointer;
 }

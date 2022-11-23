@@ -27,7 +27,10 @@ class Home extends React.Component {
       .then(r => {
         this.setState({ headers: r }, this.autoscroll);
       })
-      .catch(r => console.error(r));
+      .catch(err => {
+        this.props.networkError();
+        console.error(err);
+      });
 
     window.addEventListener('resize', this.handleResize);
   }

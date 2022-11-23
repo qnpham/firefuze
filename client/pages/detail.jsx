@@ -23,14 +23,20 @@ class detail extends React.Component {
       .then(r => {
         this.setState({ game: r });
       })
-      .catch(r => console.error(r));
+      .catch(err => {
+        this.props.networkError();
+        console.error(err);
+      });
 
     fetch(`/api/screenshots/${gameId}`)
       .then(r => r.json())
       .then(r => {
         this.setState({ screenshots: r }, this.autoscroll);
       })
-      .catch(r => console.error(r));
+      .catch(err => {
+        this.props.networkError();
+        console.error(err);
+      });
 
     window.addEventListener('resize', this.handleResize);
   }
@@ -111,7 +117,7 @@ class detail extends React.Component {
 
     if (device === 'small') {
       return (
-        <div className='container'>
+        <div className='container scrollfix'>
           <div className="carousel-container row">
             <img src={currentScreenshot.imageurl} alt="" className='ss-carousel'/>
             <div className="tabs">
