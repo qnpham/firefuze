@@ -53,7 +53,7 @@ class Cart extends React.Component {
     if (on) {
       return (
         <div>
-          <div className='cart-container cart-on'>
+          <div className='cart-container cart-on container'>
             <div className='cart-text-container'>
               <p className='cart-text'>CART</p>
             </div>
@@ -76,7 +76,7 @@ class Cart extends React.Component {
     } else {
       return (
         <div>
-          <div className='cart-container'>
+          <div className='cart-container container'>
             <div className='cart-text-container'>
               <p className='cart-text'>CART</p>
             </div>

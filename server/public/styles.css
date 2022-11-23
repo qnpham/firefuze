@@ -2,12 +2,10 @@ body {
   font-family: "Lexend Deca", sans-serif;
   font-weight: 400;
   color: white;
-  overflow: hidden;
+  background-color: #1e1f22;
 }
 
 main {
-  overflow: hidden;
-  background-color: #1e1f22;
   height: 100vh;
 }
 
@@ -31,6 +29,10 @@ input {
 
 form {
   line-height: 2.5rem;
+}
+
+.container {
+  overflow: hidden;
 }
 
 .logo {
@@ -263,7 +265,7 @@ form {
 }
 
 .black {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100vh;
   right: 0;
@@ -522,7 +524,7 @@ form {
   display: flex;
   justify-content: center;
   height: 100vh;
-  margin-top: 20rem;
+  margin-top: 15rem;
 }
 
 .error {
