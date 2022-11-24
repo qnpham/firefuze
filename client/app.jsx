@@ -4,12 +4,12 @@ import Detail from './pages/detail';
 import Cart from './components/cart';
 import Navbar from './components/navbar';
 import Checkout from './pages/checkout';
-import CheckingOut from './pages/checkingout';
+import CheckingOut from './pages/checking-out';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import Stripe from './components/stripe';
 import Confirmation from './pages/confirmation';
-import NetworkError from './pages/networkerror';
+import NetworkError from './pages/network-error';
 
 const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
