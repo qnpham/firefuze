@@ -1,4 +1,4 @@
-# student-grade-table
+# FireFuze
 
 A full stack JavaScript application for gamers who want to purchase shooter games.
 
