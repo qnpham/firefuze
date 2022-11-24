@@ -14,7 +14,7 @@ function Nav(props) {
           </h1>
         </div>
         <div className="right-nav">
-          <i className="fa-solid fa-cart-shopping shopping-cart" onClick={props.cartOn} />
+          <a className="fa-solid fa-cart-shopping shopping-cart" onClick={props.cartOn} />
         </div>
       </div>
     </div>
