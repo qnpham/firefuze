@@ -60,6 +60,12 @@ Try the application live at [https://firefuze.quannampham.com/](https://firefuze
     npm install
     ```
 
+1. create the database.
+
+    ```shell
+    createdb firefuze
+    ```
+
 1. Import the example database.
 
     ```shell
