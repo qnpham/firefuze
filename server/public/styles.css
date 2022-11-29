@@ -23,7 +23,6 @@ label {
 }
 
 input {
-  display: block;
   width: 100%;
 }
 
@@ -80,7 +79,6 @@ form {
 
 .best-sellers {
   font-weight: 300;
-  display: inline-block;
 }
 
 .game-container {
@@ -89,25 +87,14 @@ form {
   align-items: center;
 }
 
-.game-img-container {
-  justify-content: center;
-  align-items: center;
-}
-
 .game-img {
   width: 100%;
-  object-fit: cover;
-  max-height: 6rem;
 }
 
 .game-text {
   padding-left: 0.25rem;
   line-height: 1rem;
   margin-left: 0.5rem;
-}
-
-.full-width {
-  width: 100%;
 }
 
 .game-features {
@@ -127,8 +114,6 @@ form {
 
 .price {
   font-size: 0.75rem;
-  justify-content: center;
-  align-items: center;
 }
 
 .bg-carousel-container {
