@@ -237,8 +237,6 @@ form {
   position: fixed;
   width: 100%;
   height: 100vh;
-  right: 0;
-  bottom: 0;
   background-color: black;
   opacity: 0;
   z-index: -1;
@@ -282,8 +280,6 @@ form {
 }
 
 .cart-game-img-container {
-  width: 100%;
-  height: 100%;
   padding-left: 0.5rem;
 }
 
@@ -314,8 +310,6 @@ form {
 .cart-game-price {
   font-size: 0.75rem;
   font-weight: 300;
-  justify-content: center;
-  align-items: center;
   padding-right: 1rem;
 }
 
@@ -338,7 +332,6 @@ form {
 
 .checkout-btn {
   background-color: white;
-  text-decoration: none;
   color: black;
   padding: 0.25rem;
 }
