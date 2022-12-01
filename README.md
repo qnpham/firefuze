@@ -39,6 +39,7 @@ Try the application live at [https://firefuze.quannampham.com/](https://firefuze
 - Users can search
 - Users can sort search
 - Users can filter search
+- User can receieve email after purchasing
 
 ### System Requirements
 
