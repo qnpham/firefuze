@@ -23,7 +23,6 @@ label {
 }
 
 input {
-  display: block;
   width: 100%;
 }
 
@@ -80,7 +79,6 @@ form {
 
 .best-sellers {
   font-weight: 300;
-  display: inline-block;
 }
 
 .game-container {
@@ -89,25 +87,14 @@ form {
   align-items: center;
 }
 
-.game-img-container {
-  justify-content: center;
-  align-items: center;
-}
-
 .game-img {
   width: 100%;
-  object-fit: cover;
-  max-height: 6rem;
 }
 
 .game-text {
   padding-left: 0.25rem;
   line-height: 1rem;
   margin-left: 0.5rem;
-}
-
-.full-width {
-  width: 100%;
 }
 
 .game-features {
@@ -127,8 +114,6 @@ form {
 
 .price {
   font-size: 0.75rem;
-  justify-content: center;
-  align-items: center;
 }
 
 .bg-carousel-container {
@@ -180,7 +165,7 @@ form {
 .ss-carousel {
   object-fit: cover;
   width: 100%;
-  height: 13.5rem;
+  height: 20rem;
 }
 
 .detail-text-container {
@@ -188,11 +173,9 @@ form {
   margin-left: auto;
   margin-right: auto;
   width: 85%;
-  line-height: 2rem;
 }
 
 .detail-title {
-  font-size: 1.5rem;
   text-align: center;
   font-weight: 300;
 }
@@ -200,7 +183,6 @@ form {
 .detail-description {
   margin-top: 1.5rem;
   font-weight: 300;
-  font-size: 1rem;
   line-height: 1.5rem;
 }
 
@@ -236,12 +218,10 @@ form {
 }
 
 .add-to-cart-container {
-  text-align: center;
   margin-top: 1.5rem;
   margin-left: auto;
   margin-right: auto;
   border-radius: 3px;
-  align-items: center;
   justify-content: center;
   width: 7rem;
   background-color: #343a40;
@@ -249,27 +229,14 @@ form {
 
 .add-to-cart {
   font-size: 0.8rem;
-  text-align: center;
   color: white;
-  text-decoration: none;
   padding: 0.5rem;
-}
-
-.side-padding {
-  padding: 0 2.5rem;
-}
-
-.logo-text {
-  color: white;
-  text-decoration: none;
 }
 
 .black {
   position: fixed;
   width: 100%;
   height: 100vh;
-  right: 0;
-  bottom: 0;
   background-color: black;
   opacity: 0;
   z-index: -1;
@@ -313,8 +280,6 @@ form {
 }
 
 .cart-game-img-container {
-  width: 100%;
-  height: 100%;
   padding-left: 0.5rem;
 }
 
@@ -345,8 +310,6 @@ form {
 .cart-game-price {
   font-size: 0.75rem;
   font-weight: 300;
-  justify-content: center;
-  align-items: center;
   padding-right: 1rem;
 }
 
@@ -369,7 +332,6 @@ form {
 
 .checkout-btn {
   background-color: white;
-  text-decoration: none;
   color: black;
   padding: 0.25rem;
 }
@@ -465,11 +427,6 @@ form {
   margin-top: 1.25rem;
 }
 
-.test {
-  width: 100%;
-  height: 50rem;
-}
-
 .form-container {
   margin-top: 0.5rem;
   padding: 0 1.55rem;
@@ -531,6 +488,10 @@ form {
   font-weight: 300;
   text-align: center;
   margin-top: 2rem;
+}
+
+.side-padding {
+  padding: 0 1.5rem;
 }
 
 @media only screen and (min-width: 575px) {

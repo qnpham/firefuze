@@ -127,9 +127,9 @@ class Home extends React.Component {
           </div>
           <div className="column-one-half">
             <div className="game-text ">
-              <h4 className='game-title full-width'>{e.title}</h4>
-              <p className='game-features full-width'>{e.features}</p>
-              <div className='game-support full-width'>
+              <h4 className='game-title'>{e.title}</h4>
+              <p className='game-features'>{e.features}</p>
+              <div className='game-support'>
                 {keyboard}
                 {mouse}
                 {controller}
