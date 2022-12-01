@@ -494,6 +494,19 @@ form {
   padding: 0 1.5rem;
 }
 
+.shopping-cart:hover,
+.arrows:hover,
+.carousel:hover,
+.tabs:hover,
+.game-container:hover,
+.logo:hover,
+.add-to-cart-container:hover,
+.continue:hover,
+.final-checkout-btn:hover,
+.button-icon:hover {
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 575px) {
   .logo {
     font-size: 1.75rem;
@@ -870,17 +883,4 @@ form {
   .custom-column {
     flex-basis: 45%;
   }
-}
-
-.shopping-cart:hover,
-.arrows:hover,
-.carousel:hover,
-.tabs:hover,
-.game-container:hover,
-.logo:hover,
-.add-to-cart-container:hover,
-.continue:hover,
-.final-checkout-btn:hover,
-.button-icon:hover {
-  cursor: pointer;
 }
