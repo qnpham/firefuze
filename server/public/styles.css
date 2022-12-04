@@ -507,6 +507,24 @@ form {
   cursor: pointer;
 }
 
+.empty-cart-container {
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+
+.empty {
+  font-size: 1.25rem;
+}
+
+.return-message {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background-color: white;
+  color: black;
+  padding: 0.25rem;
+  border: 3px;
+}
+
 @media only screen and (min-width: 575px) {
   .logo {
     font-size: 1.75rem;
