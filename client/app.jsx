@@ -10,6 +10,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import Stripe from './components/stripe';
 import Confirmation from './pages/confirmation';
 import NetworkError from './pages/network-error';
+import EmptyCart from './pages/empty-cart';
 
 const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
@@ -303,7 +304,11 @@ export default class App extends React.Component {
     } else if (route === 'id') {
       page = <Detail id={param} cartOn={this.cartOn} addCartHandler={this.addCartHandler} networkError={this.networkError}/>;
     } else if (route === 'checkout') {
-      page = <Checkout cart={cart} subtotal={subtotal} incQuantity={this.incQuantity} decQuantity={this.decQuantity} />;
+      if (subtotal) {
+        page = <Checkout cart={cart} subtotal={subtotal} incQuantity={this.incQuantity} decQuantity={this.decQuantity} />;
+      } else {
+        page = <EmptyCart />;
+      }
     } else if (route === 'checkingout') {
       if (param === 'payment' && userEmail) {
         page = <div>
