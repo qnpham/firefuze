@@ -14,6 +14,7 @@ To use all of the skills I have learned in the past 3 months
 - PostgreSQL
 - HTML5
 - CSS3
+- Stripe
 
 ## Live Demo
 
