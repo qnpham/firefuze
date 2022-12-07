@@ -72,6 +72,12 @@ Try the application live at [https://firefuze.quannampham.com/](https://firefuze
     - Update STRIPE_SECRET_KEY
     - Update STRIPE_PUBLIC_KEY
 
+1. Start PostgreSQL
+
+   ```shell
+   sudo service postgresql start
+   ```
+
 1. create the database.
 
     ```shell
@@ -83,12 +89,6 @@ Try the application live at [https://firefuze.quannampham.com/](https://firefuze
     ```shell
     npm run db:import
     ```
-
-1. Start PostgreSQL
-
-   ```shell
-   sudo service postgresql start
-   ```
 
 1. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
 

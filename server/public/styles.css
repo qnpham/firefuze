@@ -3,11 +3,11 @@ body {
   font-weight: 400;
   color: white;
   background-color: #1e1f22;
-  overflow-y: hidden;
 }
 
 main {
   height: 100vh;
+  overflow: hidden;
 }
 
 a {
@@ -166,7 +166,7 @@ form {
 .ss-carousel {
   object-fit: cover;
   width: 100%;
-  height: 20rem;
+  height: 15rem;
 }
 
 .detail-text-container {
@@ -174,6 +174,7 @@ form {
   margin-left: auto;
   margin-right: auto;
   width: 85%;
+  padding-bottom: 3rem;
 }
 
 .detail-title {
@@ -660,9 +661,17 @@ form {
   .minus {
     font-size: 0.6rem;
   }
+
+  .ss-carousel {
+    height: 20rem;
+  }
 }
 
 @media only screen and (min-width: 768px) {
+  body {
+    overflow-y: hidden;
+  }
+
   .scrollfix {
     overflow-y: scroll;
     height: 100%;
