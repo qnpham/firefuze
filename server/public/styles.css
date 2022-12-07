@@ -3,6 +3,7 @@ body {
   font-weight: 400;
   color: white;
   background-color: #1e1f22;
+  overflow-y: hidden;
 }
 
 main {
