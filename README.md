@@ -69,7 +69,7 @@ Try the application live at [https://firefuze.quannampham.com/](https://firefuze
 1. Update the .env file.
 
     - Update TOKEN_SECRET
-    - Update CHANGEME in DATABASE_URL to firefuze
+    - Update changeMe in DATABASE_URL to firefuze
     - Update STRIPE_SECRET_KEY
     - Update STRIPE_PUBLIC_KEY
 
