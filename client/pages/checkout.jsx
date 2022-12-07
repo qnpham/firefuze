@@ -37,7 +37,7 @@ class Checkout extends React.Component {
             <div className='cart-game-text column-one-half'>
               <div className='cart-game-title checkout-game-title'>{e.title}</div>
               <div className='quantity-container'>
-                <span className='quantity-text checkout-game-qnty'>QNTY</span>
+                <span className='quantity-text checkout-game-qnty'>QTY</span>
                 <div className='quantity-buttons checkout-qnty-btns'>
                   <button className="button-icon">
                     <i className="fa-solid fa-plus plus" onClick={this.plusHandler} />
